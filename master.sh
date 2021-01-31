@@ -3,10 +3,8 @@ say "Running the entire project."
 
 steps=(fetch build analyze)
 for s in ${steps[@]}; do
-  say "Starting the ${s} step."
-  cd ${s}/code
-  ./master.sh
-  cd ../..
+  say "${s}"
+  $s/code/master.sh
 done
 
 say "Fully done!"

@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 step="fetch"
 next="build"
-scp run_sas.sh $WRDS:~ &
-scp *.sas $WRDS:~ &
+scp $step/code/run_sas.sh $WRDS:~ &
+scp $step/code/*.sas $WRDS:~ &
 wait
 
 tables=(compa compq names)
@@ -16,7 +16,7 @@ SCRIPT
 # Clearer, but slower (no simultaneous download), to use /\{compq,compa\}.dta
 #   syntax and no loop.
 for i in "${tables[@]}"; do
-  scp $WRDS:~/compustat_data/${i}.dta ../../${next}/in/ &
+  scp $WRDS:~/compustat_data/${i}.dta ${next}/in/ &
 done
 wait
 
