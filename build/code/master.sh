@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh -x
+#!/usr/bin/env zsh 
 pwd
 step="build"
 next="analyze"
@@ -30,10 +30,10 @@ else
 fi
 
 # Sync outputs back to local machine
-rsync "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
+rsync -a "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
 wait
 
 # Sync to next in dir (Would make symlink, but data access problems on Windows)
-rsync $step/out/* $next/in/
+rsync -a $step/out/* $next/in/
 
 say "done"

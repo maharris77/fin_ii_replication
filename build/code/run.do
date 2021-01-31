@@ -67,7 +67,7 @@ rangestat (sd) oibdp_diff (mean) asslc, interval(yeara -4 -1) by(gvkey)
 gen cfvar = oibdp_diff_sd / asslc_mean
 
 **Make the "In an S&P index" variable
-
+di "Hello"
 
 * Save the result as temp file
 loc tmp2 "../tmp/compustat_built.dta"

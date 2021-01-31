@@ -28,7 +28,7 @@ else
 fi
 
 # Sync outputs back to local machine
-rsync "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
+rsync -a "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
 wait
 
 say "done"
