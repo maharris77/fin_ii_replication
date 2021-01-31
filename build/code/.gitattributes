@@ -1,2 +1,0 @@
-../out/out.dta filter=lfs diff=lfs merge=lfs -text
-../../analyze/in/out.dta filter=lfs diff=lfs merge=lfs -text
