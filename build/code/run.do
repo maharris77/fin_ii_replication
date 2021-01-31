@@ -67,15 +67,45 @@ rangestat (sd) oibdp_diff (mean) asslc, interval(yeara -4 -1) by(gvkey)
 gen cfvar = oibdp_diff_sd / asslc_mean
 
 **Make the "In an S&P index" variable
-di "Hello"
+preserve
+use "../in/SPMIM_data.dta", clear
+drop if mi(spmim)
+* All obs left are S&P index obs. Collapse data and add indicator.
+keep gvkey year
+bys _all: keep if _n==1
+gen spind = 1
+* Prepare for merge
+ren year yeara
+* Save the result as temp file
+loc tmp2 "../tmp/spind.dta"
+save `tmp2', replace
+* Go back to main compustat dataset
+restore
+
+**Merge the "In an S&P index" variable
+merge 1:1 gvkey yeara using `tmp2'
+drop if _merge == 2
+drop _merge
+* NOTE: NO COVERAGE AFTER 2004; 2004 reliability unknown...
+* For covered years, mising 'spind' means not S&P index. Otherwise, unknown.
+replace spind = 0 if mi(spind) & yeara < 2004
+
+**Create the "Traded OTC" variable
+gen exch = inlist(exchg, 13, 19)
+
+**Create the "Years since IPO" variable
+gen year_if_price_nonmissing = year if !mi(prcc_f)
+rangestat (firstnm) year_if_price_nonmissing, interval(yeara . .) by(gvkey)
+ren year_if_price_nonmissing_firstnm ipo_year
+gen firmage = yeara - ipo_year
 
 * Save the result as temp file
-loc tmp2 "../tmp/compustat_built.dta"
-save `tmp2', replace
+loc tmp3 "../tmp/compustat_built.dta"
+save `tmp3', replace
 
 **Build the merged panel dataset
 use "../in/sufi_rfs_linesofcredit20070221data.dta", clear
-merge 1:1 gvkey yeara using `tmp2'
+merge 1:1 gvkey yeara using `tmp3'
 keep if _merge == 3
 drop _merge
 
