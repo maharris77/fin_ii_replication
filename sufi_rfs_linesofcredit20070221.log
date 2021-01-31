@@ -1,0 +1,1772 @@
+------------------------------------------------------------------------------------------
+       log:  C:\Documents and Settings\asufi\My Documents\Work\lines\public\SUFI_RFS_LINES
+> OFCREDIT20070221.log
+  log type:  text
+ opened on:  27 Feb 2007, 16:51:13
+
+. ***********************************************************
+> *INTRODUCTORY NOTE
+> *
+> *THIS LOG FILE CONTAINS ALL RESULTS PRESENTED IN MY LINES OF CREDIT
+> *PAPER IN THE REVIEW OF FINANCIAL STUDIES.  THE DATA SET THAT IS
+> *AVAILABLE ON MY WEBSITE CONTAINS ONLY THE LINE OF CREDIT DATA
+> *THAT I PERSONALLY COLLECTED, TOGETHER WITH THE GVKEY YEARA SO THAT
+> *YOU CAN MERGE IT BACK TO COMPUSTAT.
+> *
+> *PLEASE READ THE DATA SECTION OF THE RFS PAPER FOR A MORE FULL
+> *DESCRIPTION OF HOW THE DATA WERE COLLECTED AND HOW THE COMPUSTAT
+> *VARIABLES WERE DEFINED
+> *
+> *
+> *--AS, 02/27/2007
+> *
+> ****************************************************************;
+. use SUFI_RFS_LINESOFCREDIT20070221FULLDATA.dta, clear;
+
+. *PRELIMINARIES;
+. desc;
+
+Contains data from SUFI_RFS_LINESOFCREDIT20070221FULLDATA.dta
+  obs:        28,447
+ vars:            74                          27 Feb 2007 16:50
+ size:     8,363,418 (98.7% of memory free)
+-------------------------------------------------------------------------------
+              storage  display     value
+variable name   type   format      label      variable label
+-------------------------------------------------------------------------------
+gvkey           long   %12.0g                 Compustat firm identifier
+yeara           float  %8.0g                  Fiscal year
+randomsample    float  %9.0g                  Random sample
+lass            float  %9.0g                  Ln(assets)
+lassl1          float  %9.0g                  Lagged(ln(assets))
+asslcl1         float  %9.0g                  Lagged(total assets less cash)
+lasslcl1        float  %9.0g                  Ln(lagged assets - cash)
+cashdiff        float  %9.0g                  Change in cash scaled by assets
+bd              float  %9.0g                  Book leverage ratio
+bdl1            float  %9.0g                  Lagged book leverage ratio
+mb              float  %9.0g                  Market to book ratio
+mbl1            float  %9.0g                  Lagged(market to book ratio
+mblcl1          float  %9.0g                  Lagged(Market to book, cash
+                                                adjusted)
+eoyq            float  %9.0g                  End of year Q
+cr              float  %9.0g                  Current ratio
+crl1            float  %9.0g                  Lagged(current ratio)
+nw              float  %9.0g                  Net worth/assets
+nwl1            float  %9.0g                  Lagged(net worth/assets)
+nwlcl1          float  %9.0g                  Lagged(Net worth/(assets -
+                                                cash))
+cf              float  %9.0g                  Cash flow/assets
+cf_             float  %9.0g                  Cash flow/lagged assets
+cf_l1           float  %9.0g                  Lagged (cash flow/lagged
+                                                assetes)
+cflcl1          float  %9.0g                  Lagged(Cash flow/(assets-cash))
+cfvar           float  %9.0g                  Earnings volatility, Mackie
+                                                Mason
+tanglcl1        float  %9.0g                  Lagged(Tangible
+                                                assets/(assets-cash))
+d_rating        float  %9.0g                  Has issuer credit rating
+yd1996          float  %9.0g
+yd1997          float  %9.0g
+yd1998          float  %9.0g
+yd1999          float  %9.0g
+yd2000          float  %9.0g
+yd2001          float  %9.0g
+yd2002          float  %9.0g
+yd2003          float  %9.0g
+sic             float  %9.0g                  1-digit SIC code
+line_uns        float  %9.0g
+lineun          float  %9.0g                  Unused line
+line            float  %9.0g                  Used line
+linetot         float  %9.0g                  Total line
+liq_lineun      float  %9.0g                  Unused line/(unused line + cash)
+liq_linetot     float  %9.0g                  Total line/(total line + cash)
+d_bd            float  %9.0g                  Debt >0
+ra_line         float  %9.0g                  Used line/assets
+ra_lineun       float  %9.0g                  Unused line/assets
+ra_linetot      float  %9.0g                  Total line/assets
+lineofcredit_rs float  %9.0g                  Has line of credit, random
+                                                sample
+ut_line         float  %9.0g                  Used line/total line
+lineofcredit    byte   %8.0g                  Has line of credit, full sample
+spind           float  %9.0g                  in an S&P index
+exch            float  %9.0g                  Traded OTC
+firmage         float  %9.0g                  Years since IPO
+lfirmage        float  %9.0g                  Ln(years since IPO)
+q_salesvar      float  %9.0g                  3-digit SIC industry volatility
+linetot_        float  %9.0g                  Total line/lagged assets
+lineun_         float  %9.0g                  Unused line/lagged assets
+line_           float  %9.0g                  Used line/lagged assets
+lineofcredit_~1 float  %9.0g                  Lagged has line of credit,
+                                                random sample
+def             float  %9.0g                  Financial covenant violation
+defl1           float  %9.0g                  Lagged financial covenant
+                                                violation
+zscorecat       byte   %8.0g                  ZSCORE category
+cfcat           float  %9.0g                  CF decile
+sicss           float  %9.0g                  Broad industry categories
+deftime         float  %9.0g
+linealways      float  %9.0g                  Firm has line of credit in
+                                                every year in sample
+highcf          float  %9.0g                  CF above median in every year
+line_uncon      float  %9.0g                  Unconstrained, by line of
+                                                credit measure
+rhigh           float  %9.0g                  Firm has credit rating in sample
+chigh           float  %9.0g                  Firm has commercial paper
+                                                rating in sample
+payoutgroup     float  %9.0g                  Payout decile
+phigh           float  %9.0g                  High payout group
+sizegroup       float  %9.0g                  Size decile
+shigh           float  %9.0g                  High size group
+zscorecat2      float  %9.0g                  ZSCORE category - 1
+cflcl1z         float  %9.0g                  Cash flow*High Z-score
+-------------------------------------------------------------------------------
+Sorted by:  gvkey  yeara
+
+. sum;
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+       gvkey |     28447       30488    32506.99       1004     141469
+       yeara |     28447    1999.577    2.222229       1996       2003
+randomsample |     28447    .0670721    .2501512          0          1
+        lass |     28447    5.127885    2.155404  -5.521461   13.38085
+      lassl1 |     28447    5.031662    2.133512  -2.525729   13.26255
+-------------+--------------------------------------------------------
+     asslcl1 |     28447    1608.078     10675.9       .001     558501
+    lasslcl1 |     28447     4.72507    2.331203  -6.907768   13.23301
+    cashdiff |     28447   -.0041453    .1080452  -.4015279   .3709331
+          bd |     28414    .2036028    .1904033          0     .96456
+        bdl1 |     28409    .2031651    .2279978          0   16.76543
+-------------+--------------------------------------------------------
+          mb |     28447    2.094882    1.953738   .5133372   12.66191
+        mbl1 |     28447    2.230631    2.206899   .5163659   14.22134
+      mblcl1 |     28447    2.943562    3.468768   .6585672   14.45284
+        eoyq |     28447    2.092568    1.952761   .5129972   12.66191
+          cr |     27778    3.136242    3.432967   .3370189   23.06215
+-------------+--------------------------------------------------------
+        crl1 |     27757    3.269993    3.679683   .3404298   24.25835
+          nw |     28447    .5423637    .2271635  -.0739799          1
+        nwl1 |     28447    .5481028    .2294795   .0236196   .9617311
+      nwlcl1 |     28447    .4364989    .2377378  -.0702553   .8202379
+          cf |     28416    .0506097     .229298  -1.072554   .3912639
+-------------+--------------------------------------------------------
+         cf_ |     28416    .0764786    .2376912  -1.028201   .5545708
+       cf_l1 |     28447   -.0167338    7.599483  -1205.056   39.73904
+      cflcl1 |     28447    .0263163    .3575284  -1.161482   .3966702
+       cfvar |     28447    .0906673    .1088613   .0038192   .6402573
+    tanglcl1 |     28447    .3396737    .2394831   .0423288   .8450453
+-------------+--------------------------------------------------------
+    d_rating |     28447     .220902    .4148619          0          1
+      yd1996 |     28447    .1039477     .305198          0          1
+      yd1997 |     28447    .1198369    .3247764          0          1
+      yd1998 |     28447     .129047    .3352578          0          1
+      yd1999 |     28447    .1355503    .3423164          0          1
+-------------+--------------------------------------------------------
+      yd2000 |     28447    .1329138    .3394876          0          1
+      yd2001 |     28447    .1316132    .3380757          0          1
+      yd2002 |     28447    .1264457    .3323568          0          1
+      yd2003 |     28447    .1206454    .3257205          0          1
+         sic |     28447    3.937427    2.021962          1          8
+-------------+--------------------------------------------------------
+    line_uns |      1908    31.90033    237.1743          0       4755
+      lineun |      1908     144.037    536.7798          0      10400
+        line |      1908    51.34572    261.3921          0       4755
+     linetot |      1908    195.3827     679.501          0      14671
+  liq_lineun |      1906    .4497054    .3731998          0          1
+-------------+--------------------------------------------------------
+ liq_linetot |      1908    .5117739    .3875958          0          1
+        d_bd |     28447    .8350265    .3711631          0          1
+     ra_line |      1908     .056855    .0973093          0   .8144747
+   ra_lineun |      1908    .1020468    .1246298          0   1.327842
+  ra_linetot |      1908    .1589018    .1688065          0    1.42002
+-------------+--------------------------------------------------------
+lineofcred~s |      1908    .7484277    .4340304          0          1
+     ut_line |      1428    .2994874    .3215115          0          1
+lineofcredit |     28447    .8169227    .3867367          0          1
+       spind |     28447    .6960312    .4599774          0          1
+        exch |     28447     .122614    .3279994          0          1
+-------------+--------------------------------------------------------
+     firmage |     28447     14.7232    13.04461          1         53
+    lfirmage |     28447    2.396791      .88097   .6931472   3.988984
+  q_salesvar |     28447    .0429384    .0334678          0   .4312765
+    linetot_ |      1908    .1831604    .2025261          0   1.022178
+     lineun_ |      1908    .1149158    .1341071          0   .6775263
+-------------+--------------------------------------------------------
+       line_ |      1908    .0666024    .1162961          0   .5771922
+lineofcred~1 |      1595    .7611285    .4265278          0          1
+         def |      1908    .0796646    .2708442          0          1
+       defl1 |      1620    .0777778    .2679043          0          1
+   zscorecat |     27597    .4996558    .5000089          0          1
+-------------+--------------------------------------------------------
+       cfcat |     28407    5.498715    2.871829          1         10
+       sicss |     28447    3.205189    1.741194          1          6
+     deftime |       469    .0575693    1.804224         -3          3
+  linealways |     28447    .6627764    .4727702          0          1
+      highcf |     28447    .2087742    .4064398          0          1
+-------------+--------------------------------------------------------
+  line_uncon |     28447    .1696137    .3752996          0          1
+       rhigh |     28447    .2741238    .4460795          0          1
+       chigh |     28447    .0950891    .2933431          0          1
+ payoutgroup |     25525    4.564114    3.609126          1         10
+       phigh |     22896    .4620458    .4985683          0          1
+-------------+--------------------------------------------------------
+   sizegroup |     28447    5.502513    2.870947          1         10
+       shigh |     28447    .5004043    .5000086          0          1
+  zscorecat2 |     28447    .4853939    .4997954          0          1
+     cflcl1z |     28447    .0941324    .1260635  -1.161482   .3966702
+
+. tab yeara;
+
+Fiscal year |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       1996 |      2,957       10.39       10.39
+       1997 |      3,409       11.98       22.38
+       1998 |      3,671       12.90       35.28
+       1999 |      3,856       13.56       48.84
+       2000 |      3,781       13.29       62.13
+       2001 |      3,744       13.16       75.29
+       2002 |      3,597       12.64       87.94
+       2003 |      3,432       12.06      100.00
+------------+-----------------------------------
+      Total |     28,447      100.00
+
+. *CREATING DATA SET FOR PUBLIC USE;
+. preserve;
+
+. keep gvkey yeara randomsample lineofcredit lineofcredit_rs line lineun linetot def;
+
+. sort gvkey yeara;
+
+. label data "LOC DATA FROM SUFI, RFS, BANK LINES OF CREDIT IN CORPORATE FINANCE";
+
+. desc;
+
+Contains data from SUFI_RFS_LINESOFCREDIT20070221FULLDATA.dta
+  obs:        28,447                          LOC DATA FROM SUFI, RFS, BANK
+                                                LINES OF CREDIT IN CORPORATE
+                                                FINANCE
+ vars:             9                          27 Feb 2007 16:50
+ size:     1,052,539 (99.8% of memory free)
+-------------------------------------------------------------------------------
+              storage  display     value
+variable name   type   format      label      variable label
+-------------------------------------------------------------------------------
+gvkey           long   %12.0g                 Compustat firm identifier
+yeara           float  %8.0g                  Fiscal year
+randomsample    float  %9.0g                  Random sample
+lineun          float  %9.0g                  Unused line
+line            float  %9.0g                  Used line
+linetot         float  %9.0g                  Total line
+lineofcredit_rs float  %9.0g                  Has line of credit, random
+                                                sample
+lineofcredit    byte   %8.0g                  Has line of credit, full sample
+def             float  %9.0g                  Financial covenant violation
+-------------------------------------------------------------------------------
+Sorted by:  gvkey  yeara
+     Note:  dataset has changed since last saved
+
+. sum;
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+       gvkey |     28447       30488    32506.99       1004     141469
+       yeara |     28447    1999.577    2.222229       1996       2003
+randomsample |     28447    .0670721    .2501512          0          1
+      lineun |      1908     144.037    536.7798          0      10400
+        line |      1908    51.34572    261.3921          0       4755
+-------------+--------------------------------------------------------
+     linetot |      1908    195.3827     679.501          0      14671
+lineofcred~s |      1908    .7484277    .4340304          0          1
+lineofcredit |     28447    .8169227    .3867367          0          1
+         def |      1908    .0796646    .2708442          0          1
+
+. save SUFI_RFS_LINESOFCREDIT20070221DATA.dta, replace;
+file SUFI_RFS_LINESOFCREDIT20070221DATA.dta saved
+
+. restore;
+
+. *TABLE 1: SUMMARY STATISTICS;
+. tabstat
+> lineofcredit
+> bd
+> cflcl1
+> tanglcl1
+> nwlcl1
+> asslcl1
+> mblcl1
+>
+> q_salesvar
+> cfvar
+>
+> spind
+> exch
+> firmage
+> , s(mean p50 sd n) col(stat) f(%7.3f) ;
+
+    variable |      mean       p50        sd         N
+-------------+----------------------------------------
+lineofcredit |     0.817     1.000     0.387   2.8e+04
+          bd |     0.204     0.171     0.190   2.8e+04
+      cflcl1 |     0.026     0.125     0.358   2.8e+04
+    tanglcl1 |     0.340     0.277     0.239   2.8e+04
+      nwlcl1 |     0.436     0.445     0.238   2.8e+04
+     asslcl1 |  1608.078   102.461   1.1e+04   2.8e+04
+      mblcl1 |     2.944     1.532     3.469   2.8e+04
+  q_salesvar |     0.043     0.035     0.033   2.8e+04
+       cfvar |     0.091     0.052     0.109   2.8e+04
+       spind |     0.696     1.000     0.460   2.8e+04
+        exch |     0.123     0.000     0.328   2.8e+04
+     firmage |    14.723    10.000    13.045   2.8e+04
+------------------------------------------------------
+
+. tabstat
+> lineofcredit_rs
+> ra_linetot
+> ra_lineun
+> ra_line
+> liq_linetot
+> liq_lineun
+> def
+> bd
+> cflcl1
+> tanglcl1
+> nwlcl1
+> asslcl1
+> mblcl1
+>
+> q_salesvar
+> cfvar
+>
+> spind
+> exch
+> firmage
+> if randomsample==1, s(mean p50 sd n) col(stat) f(%7.3f) ;
+
+    variable |      mean       p50        sd         N
+-------------+----------------------------------------
+lineofcred~s |     0.748     1.000     0.434  1908.000
+  ra_linetot |     0.159     0.112     0.169  1908.000
+   ra_lineun |     0.102     0.069     0.125  1908.000
+     ra_line |     0.057     0.000     0.097  1908.000
+ liq_linetot |     0.512     0.569     0.388  1908.000
+  liq_lineun |     0.450     0.455     0.373  1906.000
+         def |     0.080     0.000     0.271  1908.000
+          bd |     0.205     0.169     0.196  1908.000
+      cflcl1 |     0.034     0.126     0.353  1908.000
+    tanglcl1 |     0.331     0.275     0.226  1908.000
+      nwlcl1 |     0.451     0.459     0.234  1908.000
+     asslcl1 |  1441.409   116.411  7682.261  1908.000
+      mblcl1 |     2.790     1.498     3.319  1908.000
+  q_salesvar |     0.045     0.036     0.035  1908.000
+       cfvar |     0.091     0.052     0.109  1908.000
+       spind |     0.684     1.000     0.465  1908.000
+        exch |     0.142     0.000     0.349  1908.000
+     firmage |    14.121     9.000    12.363  1908.000
+------------------------------------------------------
+
+. *TABLE 2: WHO USES LINE OF CREDIT?;
+. preserve;
+
+. replace ra_linetot=. if lineofcredit_rs==0;
+(480 real changes made, 480 to missing)
+
+. replace ra_line=. if lineofcredit_rs==0;
+(480 real changes made, 480 to missing)
+
+. replace ra_lineun=. if lineofcredit_rs==0;
+(480 real changes made, 480 to missing)
+
+. replace bd=. if lineofcredit_rs==0;
+(480 real changes made, 480 to missing)
+
+. label list;
+
+. table sicss if randomsample==1,    c(mean lineofcredit_rs mean d_bd mean bd mean ra_line
+> tot mean ut_line) f(%9.3f);
+
+--------------------------------------------------------------------------------
+Broad     |
+industry  |
+categorie |
+s         | mean(line~s)    mean(d_bd)      mean(bd)  mean(ra_l~t)  mean(ut_l~e)
+----------+---------------------------------------------------------------------
+        1 |        0.761         0.862         0.303         0.306         0.490
+        2 |        0.731         0.809         0.205         0.216         0.267
+        3 |        0.860         0.907         0.366         0.163         0.338
+        4 |        0.932         0.915         0.256         0.221         0.321
+        5 |        0.920         0.938         0.286         0.194         0.283
+        6 |        0.630         0.701         0.245         0.204         0.304
+--------------------------------------------------------------------------------
+
+. table d_rating if randomsample==1, c(mean lineofcredit_rs mean d_bd mean bd mean ra_line
+> tot mean ut_line) f(%9.3f);
+
+--------------------------------------------------------------------------------
+Has       |
+issuer    |
+credit    |
+rating    | mean(line~s)    mean(d_bd)      mean(bd)  mean(ra_l~t)  mean(ut_l~e)
+----------+---------------------------------------------------------------------
+        0 |        0.697         0.765         0.196         0.220         0.319
+        1 |        0.945         0.995         0.384         0.190         0.245
+--------------------------------------------------------------------------------
+
+. table d_bd if randomsample==1,     c(mean lineofcredit_rs mean bd mean ra_linetot mean u
+> t_line) f(%9.3f);
+
+--------------------------------------------------------------------------
+  Debt >0 | mean(lineof~s)        mean(bd)  mean(ra_lin~t)   mean(ut_line)
+----------+---------------------------------------------------------------
+        0 |          0.319           0.000           0.110           0.000
+        1 |          0.847           0.267           0.221           0.325
+--------------------------------------------------------------------------
+
+. restore;
+
+. *SECTION 3: Lines versus cash;
+. *TABLE 3;
+. xi: dprobit lineofcredit  yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1 q_salesvar cf
+> var spind exch lfirmage, cluster(gvkey);
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+note: yd1996 dropped due to collinearity
+Iteration 0:   log pseudolikelihood = -13541.563
+Iteration 1:   log pseudolikelihood = -10936.339
+Iteration 2:   log pseudolikelihood = -10865.008
+Iteration 3:   log pseudolikelihood = -10864.383
+Iteration 4:   log pseudolikelihood = -10864.383
+
+Probit regression, reporting marginal effects           Number of obs =  28447
+                                                        Wald chi2(23) =1495.11
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -10864.383                       Pseudo R2     = 0.1977
+
+                            (standard errors adjusted for clustering on gvkey)
+------------------------------------------------------------------------------
+         |               Robust
+lineof~t |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+  yd1997*|   .0174039   .0053851     3.11   0.002   .119837   .006849  .027959
+  yd1998*|   .0118057   .0063948     1.80   0.072   .129047  -.000728  .024339
+  yd1999*|   .0009886   .0074461     0.13   0.895    .13555  -.013606  .015583
+  yd2000*|   .0054835    .007992     0.68   0.497   .132914  -.010181  .021147
+  yd2001*|  -.0160355   .0090716    -1.82   0.069   .131613  -.033816  .001745
+  yd2002*|  -.0281862   .0098269    -3.00   0.003   .126446  -.047447 -.008926
+  yd2003*|  -.0449344   .0106206    -4.53   0.000   .120645   -.06575 -.024118
+ _Isic_2*|  -.0168801   .0204441    -0.85   0.398   .181144   -.05695   .02319
+ _Isic_3*|   .0169805    .018504     0.90   0.366   .334517  -.019287  .053248
+ _Isic_4*|   .0146672   .0217189     0.65   0.513   .084649  -.027901  .057236
+ _Isic_5*|   .0325687    .020559     1.48   0.140   .118571  -.007726  .072864
+ _Isic_7*|  -.0363993   .0220731    -1.74   0.082   .162442  -.079662  .006863
+ _Isic_8*|   .0083235   .0224266     0.36   0.716   .054909  -.035632  .052279
+  cflcl1 |   .1074338    .010875     9.97   0.000   .026316   .086119  .128748
+tanglcl1 |    .014707   .0189511     0.78   0.438   .339674  -.022436  .051851
+lasslcl1 |   .0403371   .0029377    13.66   0.000   4.72507   .034579  .046095
+  nwlcl1 |  -.0943194   .0163799    -5.78   0.000   .436499  -.126423 -.062215
+  mblcl1 |  -.0130064   .0010911   -12.62   0.000   2.94356  -.015145 -.010868
+q_sale~r |   .6737934    .192637     3.46   0.001   .042938   .296232  1.05135
+   cfvar |  -.0201097   .0350166    -0.57   0.566   .090667  -.088741  .048522
+   spind*|   .0353201   .0130139     2.80   0.005   .696031   .009813  .060827
+    exch*|  -.0138444   .0128935    -1.10   0.271   .122614  -.039115  .011426
+lfirmage |  -.0027164   .0051969    -0.52   0.601   2.39679  -.012902  .007469
+---------+--------------------------------------------------------------------
+  obs. P |   .8169227
+ pred. P |   .8582394  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. xi: dprobit lineofcredit_rs     yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1 q_sales
+> var cfvar spind exch lfirmage if randomsample==1, cluster(gvkey);
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+note: yd2003 dropped due to collinearity
+Iteration 0:   log pseudolikelihood = -1076.2187
+Iteration 1:   log pseudolikelihood = -804.49632
+Iteration 2:   log pseudolikelihood = -788.86388
+Iteration 3:   log pseudolikelihood = -788.26183
+Iteration 4:   log pseudolikelihood = -788.25944
+Iteration 5:   log pseudolikelihood = -788.25944
+
+Probit regression, reporting marginal effects           Number of obs =   1908
+                                                        Wald chi2(23) = 188.73
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -788.25944                       Pseudo R2     = 0.2676
+
+                            (standard errors adjusted for clustering on gvkey)
+------------------------------------------------------------------------------
+         |               Robust
+lineof~s |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+  yd1996*|   .0957802   .0294349     2.83   0.005   .102725   .038089  .153472
+  yd1997*|   .1021867   .0286302     3.05   0.002   .124214   .046073  .158301
+  yd1998*|   .0874324    .026889     2.88   0.004   .130503   .034731  .140134
+  yd1999*|   .0736516   .0267722     2.50   0.012   .137317   .021179  .126124
+  yd2000*|   .0984339   .0262655     3.30   0.001     .1326   .046955  .149913
+  yd2001*|   .0562174   .0230584     2.25   0.025   .129979   .011024  .101411
+  yd2002*|   .0547072   .0156296     3.24   0.001    .12631   .024074  .085341
+ _Isic_2*|  -.0348633    .098718    -0.36   0.715   .158805  -.228347   .15862
+ _Isic_3*|   -.015145    .086039    -0.18   0.859   .330713  -.183778  .153488
+ _Isic_4*|   .0296353   .1108343     0.26   0.799   .078616  -.187596  .246867
+ _Isic_5*|   .0253932   .0978466     0.25   0.801   .146751  -.166383  .217169
+ _Isic_7*|  -.1495973   .1121556    -1.48   0.140   .138889  -.369418  .070224
+ _Isic_8*|  -.0131183   .1003894    -0.13   0.894   .089099  -.209878  .183641
+  cflcl1 |   .1239516   .0589752     2.13   0.033   .034466   .008362  .239541
+tanglcl1 |   .0698626   .0839152     0.84   0.403   .331078  -.094608  .234333
+lasslcl1 |   .0523676   .0146997     3.71   0.000   4.76833   .023557  .081179
+  nwlcl1 |  -.0365163   .0749175    -0.49   0.627   .450911  -.183352  .110319
+  mblcl1 |  -.0223465   .0055308    -4.35   0.000   2.78969  -.033187 -.011506
+q_sale~r |   2.571452   .8850698     2.78   0.005   .044699   .836747  4.30616
+   cfvar |   -.201311   .1464986    -1.36   0.174   .091002  -.488443  .085821
+   spind*|   .0463781   .0587776     0.81   0.415   .684486  -.068824   .16158
+    exch*|   -.045336   .0607873    -0.78   0.437   .141509  -.164477  .073805
+lfirmage |  -.0048918   .0237552    -0.21   0.836   2.36272  -.051451  .041668
+---------+--------------------------------------------------------------------
+  obs. P |   .7484277
+ pred. P |   .8077073  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. xi: regress liq_linetot   yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1 q_salesvar cf
+> var spind exch lfirmage if randomsample==1, cluster(gvkey) robust;
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+Linear regression                                      Number of obs =    1908
+                                                       F( 23,   299) =   32.36
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.3941
+Number of clusters (gvkey) = 300                       Root MSE      =  .30355
+
+------------------------------------------------------------------------------
+             |               Robust
+ liq_linetot |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |   .0138662   .0184271     0.75   0.452    -.0223969    .0501294
+      yd1998 |   .0339506   .0214463     1.58   0.114    -.0082542    .0761554
+      yd1999 |    .022698   .0231767     0.98   0.328    -.0229121    .0683081
+      yd2000 |   .0326076    .025737     1.27   0.206     -.018041    .0832562
+      yd2001 |  -.0331181    .027901    -1.19   0.236    -.0880253    .0217892
+      yd2002 |  -.0469195   .0286146    -1.64   0.102     -.103231    .0093919
+      yd2003 |  -.1093931   .0286376    -3.82   0.000      -.16575   -.0530362
+     _Isic_2 |  -.0753763   .0800913    -0.94   0.347    -.2329904    .0822377
+     _Isic_3 |  -.0921544   .0760285    -1.21   0.226    -.2417731    .0574643
+     _Isic_4 |  -.0607143    .088179    -0.69   0.492    -.2342443    .1128158
+     _Isic_5 |   -.045708   .0802149    -0.57   0.569    -.2035652    .1121493
+     _Isic_7 |  -.2767976   .0796379    -3.48   0.001    -.4335193    -.120076
+     _Isic_8 |  -.0712073   .0857404    -0.83   0.407    -.2399384    .0975239
+      cflcl1 |   .1094785   .0410813     2.66   0.008     .0286334    .1903236
+    tanglcl1 |   .0407357   .0718831     0.57   0.571    -.1007253    .1821966
+    lasslcl1 |    .054059   .0102891     5.25   0.000     .0338107    .0743073
+      nwlcl1 |  -.1062811   .0589653    -1.80   0.072    -.2223207    .0097586
+      mblcl1 |   -.030528   .0040345    -7.57   0.000    -.0384677   -.0225884
+  q_salesvar |   .9894031   .3820031     2.59   0.010      .237648    1.741158
+       cfvar |  -.3832184   .1253429    -3.06   0.002    -.6298844   -.1365524
+       spind |   .0645625   .0394757     1.64   0.103    -.0131229    .1422479
+        exch |   .0768043   .0470705     1.63   0.104    -.0158271    .1694356
+    lfirmage |  -.0268263   .0178718    -1.50   0.134    -.0619967    .0083441
+       _cons |   .4768821   .1241229     3.84   0.000      .232617    .7211473
+------------------------------------------------------------------------------
+
+. xi: regress liq_linetot   yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1 q_salesvar cf
+> var spind exch lfirmage if randomsample==1 & lineofcredit_rs==1, cluster(gvkey) robust;
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+Linear regression                                      Number of obs =    1428
+                                                       F( 23,   254) =   14.01
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.3050
+Number of clusters (gvkey) = 255                       Root MSE      =  .24222
+
+------------------------------------------------------------------------------
+             |               Robust
+ liq_linetot |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |   .0239467   .0173602     1.38   0.169    -.0102417     .058135
+      yd1998 |     .04443   .0199706     2.22   0.027      .005101     .083759
+      yd1999 |    .036662   .0224996     1.63   0.104    -.0076475    .0809716
+      yd2000 |   .0427876   .0231067     1.85   0.065    -.0027174    .0882927
+      yd2001 |  -.0170361   .0264578    -0.64   0.520    -.0691407    .0350685
+      yd2002 |  -.0239083    .028132    -0.85   0.396    -.0793099    .0314933
+      yd2003 |   -.077001   .0291747    -2.64   0.009    -.1344562   -.0195459
+     _Isic_2 |  -.0778232   .0572799    -1.36   0.175    -.1906272    .0349808
+     _Isic_3 |  -.1114613   .0521735    -2.14   0.034    -.2142091   -.0087136
+     _Isic_4 |  -.0950407   .0625982    -1.52   0.130    -.2183182    .0282369
+     _Isic_5 |  -.0756448   .0564258    -1.34   0.181    -.1867669    .0354772
+     _Isic_7 |  -.2558692   .0663475    -3.86   0.000    -.3865305   -.1252079
+     _Isic_8 |  -.0766601   .0627098    -1.22   0.223    -.2001574    .0468372
+      cflcl1 |   .0858905   .0558687     1.54   0.125    -.0241343    .1959153
+    tanglcl1 |   .0143301   .0635012     0.23   0.822    -.1107259     .139386
+    lasslcl1 |   .0319186   .0085017     3.75   0.000     .0151757    .0486615
+      nwlcl1 |  -.1356377   .0522851    -2.59   0.010    -.2386053   -.0326702
+      mblcl1 |  -.0366174   .0052819    -6.93   0.000    -.0470193   -.0262155
+  q_salesvar |   .0807747   .3193777     0.25   0.801    -.5481911    .7097405
+       cfvar |   -.373821   .1768072    -2.11   0.035    -.7220157   -.0256262
+       spind |   .0468525   .0342184     1.37   0.172    -.0205355    .1142404
+        exch |   .1289685   .0362586     3.56   0.000     .0575627    .2003743
+    lfirmage |  -.0344895   .0157494    -2.19   0.029    -.0655056   -.0034734
+       _cons |   .7990145   .1018354     7.85   0.000     .5984653    .9995638
+------------------------------------------------------------------------------
+
+. xi: regress liq_lineun    yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1 q_salesvar cf
+> var spind exch lfirmage if randomsample==1, cluster(gvkey) robust;
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+Linear regression                                      Number of obs =    1906
+                                                       F( 23,   299) =   27.64
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.3610
+Number of clusters (gvkey) = 300                       Root MSE      =  .30014
+
+------------------------------------------------------------------------------
+             |               Robust
+  liq_lineun |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |   .0941765   .0281018     3.35   0.001     .0388742    .1494788
+      yd1997 |   .1192023   .0262546     4.54   0.000     .0675352    .1708695
+      yd1998 |   .1245207   .0251732     4.95   0.000     .0749816    .1740599
+      yd1999 |   .0956025   .0230434     4.15   0.000     .0502546    .1409504
+      yd2000 |   .0894784   .0236101     3.79   0.000     .0430153    .1359415
+      yd2001 |   .0576532   .0200085     2.88   0.004     .0182779    .0970285
+      yd2002 |   .0378998   .0160729     2.36   0.019     .0062694    .0695302
+      yd2003 |  (dropped)
+     _Isic_2 |  -.0290761   .0740606    -0.39   0.695    -.1748223      .11667
+     _Isic_3 |  -.0524878   .0694187    -0.76   0.450    -.1890988    .0841233
+     _Isic_4 |  -.0338074   .0863887    -0.39   0.696    -.2038143    .1361995
+     _Isic_5 |  -.0300835   .0742894    -0.40   0.686    -.1762797    .1161127
+     _Isic_7 |   -.219914   .0730933    -3.01   0.003    -.3637566   -.0760715
+     _Isic_8 |  -.0271393   .0786906    -0.34   0.730    -.1819968    .1277183
+      cflcl1 |   .0850779   .0379461     2.24   0.026     .0104025    .1597532
+    tanglcl1 |   .0253405   .0683954     0.37   0.711    -.1092569    .1599379
+    lasslcl1 |   .0541684   .0096895     5.59   0.000     .0351002    .0732367
+      nwlcl1 |  -.0531118   .0543538    -0.98   0.329    -.1600763    .0538526
+      mblcl1 |  -.0249884   .0038322    -6.52   0.000      -.03253   -.0174469
+  q_salesvar |   1.068654   .4009965     2.66   0.008     .2795209    1.857787
+       cfvar |  -.2905691   .1175593    -2.47   0.014    -.5219175   -.0592207
+       spind |    .034136   .0388441     0.88   0.380    -.0423064    .1105784
+        exch |   .0221361   .0427203     0.52   0.605    -.0619345    .1062067
+    lfirmage |  -.0121479   .0175713    -0.69   0.490    -.0467269    .0224312
+       _cons |   .2388875   .1168131     2.05   0.042     .0090076    .4687675
+------------------------------------------------------------------------------
+
+. xi: regress liq_lineun    yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1 q_salesvar cf
+> var spind exch lfirmage if randomsample==1 & lineofcredit_rs==1, cluster(gvkey) robust;
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+Linear regression                                      Number of obs =    1426
+                                                       F( 23,   254) =   10.02
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.2365
+Number of clusters (gvkey) = 255                       Root MSE      =  .27172
+
+------------------------------------------------------------------------------
+             |               Robust
+  liq_lineun |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |   .0411008   .0189607     2.17   0.031     .0037606    .0784409
+      yd1998 |   .0440881   .0229934     1.92   0.056    -.0011939      .08937
+      yd1999 |   .0125909   .0256685     0.49   0.624    -.0379593    .0631412
+      yd2000 |   .0018942   .0265025     0.07   0.943    -.0502984    .0540869
+      yd2001 |  -.0183274    .027883    -0.66   0.512    -.0732387     .036584
+      yd2002 |   -.030439   .0298721    -1.02   0.309    -.0892675    .0283894
+      yd2003 |  -.0555254    .030846    -1.80   0.073    -.1162719    .0052211
+     _Isic_2 |  -.0203912   .0676338    -0.30   0.763    -.1535856    .1128032
+     _Isic_3 |  -.0542257   .0616967    -0.88   0.380     -.175728    .0672766
+     _Isic_4 |  -.0523687   .0784548    -0.67   0.505    -.2068735    .1021362
+     _Isic_5 |   -.056643   .0658477    -0.86   0.390      -.18632    .0730339
+     _Isic_7 |  -.1930532   .0736088    -2.62   0.009    -.3380144    -.048092
+     _Isic_8 |  -.0244681   .0699509    -0.35   0.727    -.1622258    .1132896
+      cflcl1 |   .1203663    .056029     2.15   0.033     .0100257    .2307069
+    tanglcl1 |  -.0055745   .0677514    -0.08   0.934    -.1390006    .1278517
+    lasslcl1 |   .0410619    .009077     4.52   0.000     .0231862    .0589377
+      nwlcl1 |  -.0404181   .0541868    -0.75   0.456    -.1471307    .0662944
+      mblcl1 |  -.0296384   .0056185    -5.28   0.000    -.0407032   -.0185736
+  q_salesvar |   .3544536   .3660377     0.97   0.334     -.366402    1.075309
+       cfvar |   -.271466    .180674    -1.50   0.134    -.6272758    .0843438
+       spind |   .0264132     .03475     0.76   0.448    -.0420215     .094848
+        exch |   .0289159   .0436106     0.66   0.508    -.0569685    .1148003
+    lfirmage |   -.021161   .0163666    -1.29   0.197    -.0533925    .0110706
+       _cons |   .5432244   .1142286     4.76   0.000     .3182686    .7681802
+------------------------------------------------------------------------------
+
+. *FIGURE 1;
+. table cfcat, c(mean lineofcredit mean cash);
+
+------------------------------------------
+CF decile | mean(lineof~t)  mean(cashdiff)
+----------+-------------------------------
+        1 |        .415201       -.0131639
+        2 |        .691441       -.0219522
+        3 |         .84353       -.0205333
+        4 |        .904996       -.0092742
+        5 |        .933122       -.0057968
+        6 |        .923374       -.0037212
+        7 |        .922453       -.0016178
+        8 |        .912324        .0014363
+        9 |        .864532        .0071193
+       10 |        .761199        .0250095
+------------------------------------------
+
+. *TABLE 4;
+. xi: dprobit lineofcredit  yd* i.sic cflcl1 zscorecat2 cflcl1z tanglcl1 lasslcl1 nwlcl1 m
+> blcl1 q_salesvar cfvar spind exch lfirmage, cluster(gvkey) robust;
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+note: yd1996 dropped due to collinearity
+Iteration 0:   log pseudolikelihood = -13541.563
+Iteration 1:   log pseudolikelihood = -10863.753
+Iteration 2:   log pseudolikelihood = -10789.853
+Iteration 3:   log pseudolikelihood = -10789.194
+Iteration 4:   log pseudolikelihood = -10789.193
+
+Probit regression, reporting marginal effects           Number of obs =  28447
+                                                        Wald chi2(25) =1548.98
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -10789.193                       Pseudo R2     = 0.2033
+
+                            (standard errors adjusted for clustering on gvkey)
+------------------------------------------------------------------------------
+         |               Robust
+lineof~t |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+  yd1997*|   .0170789   .0053746     3.06   0.002   .119837   .006545  .027613
+  yd1998*|   .0130375   .0063441     2.00   0.046   .129047   .000603  .025472
+  yd1999*|   .0035108   .0073462     0.47   0.635    .13555  -.010888  .017909
+  yd2000*|   .0068991   .0078983     0.86   0.389   .132914  -.008581   .02238
+  yd2001*|  -.0134416   .0089387    -1.54   0.124   .131613  -.030961  .004078
+  yd2002*|  -.0249312   .0096719    -2.69   0.007   .126446  -.043888 -.005975
+  yd2003*|  -.0388373   .0104006    -3.97   0.000   .120645  -.059222 -.018453
+ _Isic_2*|  -.0240431   .0209505    -1.19   0.235   .181144  -.065105  .017019
+ _Isic_3*|   .0091448   .0187467     0.48   0.628   .334517  -.027598  .045888
+ _Isic_4*|   .0157834   .0213209     0.71   0.475   .084649  -.026005  .057572
+ _Isic_5*|   .0154536   .0221571     0.68   0.499   .118571  -.027974  .058881
+ _Isic_7*|  -.0392199   .0221473    -1.87   0.061   .162442  -.082628  .004188
+ _Isic_8*|   .0026105   .0229786     0.11   0.910   .054909  -.042427  .047648
+  cflcl1 |   .1160503   .0120373     9.83   0.000   .026316   .092458  .139643
+zscore~2*|   .0894958   .0174147     5.07   0.000   .485394   .055363  .123628
+ cflcl1z |  -.2938082   .0740771    -3.95   0.000   .094132  -.438997  -.14862
+tanglcl1 |    .028983   .0187678     1.54   0.123   .339674  -.007801  .065767
+lasslcl1 |   .0399289   .0029431    13.58   0.000   4.72507   .034161  .045697
+  nwlcl1 |  -.0941088    .016257    -5.80   0.000   .436499  -.125972 -.062246
+  mblcl1 |  -.0111077   .0011553   -10.02   0.000   2.94356  -.013372 -.008843
+q_sale~r |   .6060081   .1901108     3.16   0.002   .042938   .233398  .978618
+   cfvar |   .0080005   .0348395     0.23   0.818   .090667  -.060284  .076285
+   spind*|   .0311329   .0130803     2.45   0.014   .696031   .005496   .05677
+    exch*|  -.0093112   .0127147    -0.74   0.457   .122614  -.034232  .015609
+lfirmage |  -.0079578   .0051924    -1.54   0.124   2.39679  -.018135  .002219
+---------+--------------------------------------------------------------------
+  obs. P |   .8169227
+ pred. P |   .8597443  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. xi: dprobit lineofcredit_rs     yd* i.sic cflcl1 zscorecat2 cflcl1z tanglcl1 lasslcl1 nw
+> lcl1 mblcl1 q_salesvar cfvar spind exch lfirmage if randomsample==1, cluster(gvkey) robu
+> st;
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+note: yd2003 dropped due to collinearity
+Iteration 0:   log pseudolikelihood = -1076.2187
+Iteration 1:   log pseudolikelihood = -793.74797
+Iteration 2:   log pseudolikelihood = -777.41674
+Iteration 3:   log pseudolikelihood = -776.73491
+Iteration 4:   log pseudolikelihood = -776.73166
+
+Probit regression, reporting marginal effects           Number of obs =   1908
+                                                        Wald chi2(25) = 200.75
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -776.73166                       Pseudo R2     = 0.2783
+
+                            (standard errors adjusted for clustering on gvkey)
+------------------------------------------------------------------------------
+         |               Robust
+lineof~s |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+  yd1996*|   .0904128   .0305618     2.60   0.009   .102725   .030513  .150313
+  yd1997*|   .0987044   .0294817     2.89   0.004   .124214   .040921  .156487
+  yd1998*|   .0865104   .0273968     2.81   0.005   .130503   .032814  .140207
+  yd1999*|   .0744122   .0268006     2.53   0.011   .137317   .021884   .12694
+  yd2000*|    .097611   .0265414     3.24   0.001     .1326   .045591  .149631
+  yd2001*|   .0586042   .0230933     2.33   0.020   .129979   .013342  .103866
+  yd2002*|    .054243   .0156542     3.19   0.001    .12631   .023561  .084925
+ _Isic_2*|  -.0489753   .0986245    -0.52   0.603   .158805  -.242276  .144325
+ _Isic_3*|  -.0329269   .0853951    -0.39   0.695   .330713  -.200298  .134444
+ _Isic_4*|   .0311149   .1061211     0.28   0.781   .078616  -.176879  .239108
+ _Isic_5*|  -.0178964   .1054666    -0.17   0.863   .146751  -.224607  .188814
+ _Isic_7*|  -.1684724   .1115727    -1.69   0.092   .138889  -.387151  .050206
+ _Isic_8*|  -.0302523   .1021867    -0.31   0.759   .089099  -.230535   .17003
+  cflcl1 |   .1301174   .0616092     2.17   0.030   .034466   .009366  .250869
+zscore~2*|   .1649195   .0554921     3.00   0.003   .512055   .056157  .273682
+ cflcl1z |  -.4467741   .2205778    -2.07   0.039   .099486  -.879099  -.01445
+tanglcl1 |   .1091322   .0820616     1.34   0.180   .331078  -.051706   .26997
+lasslcl1 |   .0522048   .0137416     4.00   0.000   4.76833   .025272  .079138
+  nwlcl1 |  -.0641105    .074104    -0.86   0.389   .450911  -.209352  .081131
+  mblcl1 |  -.0190911   .0049526    -4.03   0.000   2.78969  -.028798 -.009384
+q_sale~r |   2.410091   .8681805     2.66   0.008   .044699   .708488  4.11169
+   cfvar |  -.1520795   .1428799    -1.05   0.293   .091002  -.432119   .12796
+   spind*|   .0393469   .0554211     0.73   0.465   .684486  -.069276   .14797
+    exch*|  -.0224991   .0573528    -0.40   0.688   .141509  -.134909   .08991
+lfirmage |  -.0189593   .0245465    -0.78   0.434   2.36272   -.06707  .029151
+---------+--------------------------------------------------------------------
+  obs. P |   .7484277
+ pred. P |   .8115265  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. xi: regress liq_linetot   yd* i.sic cflcl1 zscorecat2 cflcl1z tanglcl1 lasslcl1 nwlcl1 m
+> blcl1 q_salesvar cfvar spind exch lfirmage if randomsample==1, cluster(gvkey) robust;
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+Linear regression                                      Number of obs =    1908
+                                                       F( 25,   299) =   30.95
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.4168
+Number of clusters (gvkey) = 300                       Root MSE      =  .29797
+
+------------------------------------------------------------------------------
+             |               Robust
+ liq_linetot |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |   .0184438   .0182117     1.01   0.312    -.0173956    .0542833
+      yd1998 |   .0413075   .0213157     1.94   0.054    -.0006402    .0832552
+      yd1999 |   .0316724   .0233653     1.36   0.176    -.0143089    .0776536
+      yd2000 |   .0356916   .0254122     1.40   0.161    -.0143178     .085701
+      yd2001 |  -.0259117   .0273608    -0.95   0.344    -.0797558    .0279325
+      yd2002 |  -.0433419   .0285237    -1.52   0.130    -.0994745    .0127907
+      yd2003 |  -.1032307   .0287994    -3.58   0.000    -.1599058   -.0465555
+     _Isic_2 |  -.0964237   .0770824    -1.25   0.212    -.2481165    .0552691
+     _Isic_3 |  -.1125744   .0734586    -1.53   0.126    -.2571359    .0319871
+     _Isic_4 |  -.0531548   .0859241    -0.62   0.537    -.2222474    .1159377
+     _Isic_5 |  -.0982883   .0779989    -1.26   0.209    -.2517847    .0552081
+     _Isic_7 |  -.2924078   .0770334    -3.80   0.000    -.4440041   -.1408114
+     _Isic_8 |  -.0885146   .0827708    -1.07   0.286    -.2514016    .0743724
+      cflcl1 |    .144786    .042292     3.42   0.001     .0615583    .2280136
+  zscorecat2 |   .2044218   .0410151     4.98   0.000     .1237069    .2851367
+     cflcl1z |    -.66621   .1557949    -4.28   0.000    -.9728033   -.3596167
+    tanglcl1 |    .083701   .0700031     1.20   0.233    -.0540601    .2214621
+    lasslcl1 |   .0532492   .0098955     5.38   0.000     .0337757    .0727228
+      nwlcl1 |  -.1371421   .0578343    -2.37   0.018     -.250956   -.0233283
+      mblcl1 |  -.0248563   .0036494    -6.81   0.000     -.032038   -.0176746
+  q_salesvar |   .8673997   .3718709     2.33   0.020     .1355839    1.599216
+       cfvar |  -.3103926   .1203175    -2.58   0.010    -.5471691   -.0736162
+       spind |   .0562524   .0374028     1.50   0.134    -.0173536    .1298584
+        exch |   .0959653   .0456534     2.10   0.036     .0061226    .1858079
+    lfirmage |   -.038865   .0175642    -2.21   0.028    -.0734301   -.0042998
+       _cons |   .4708977   .1182199     3.98   0.000     .2382494    .7035461
+------------------------------------------------------------------------------
+
+. xi: regress liq_lineun    yd* i.sic cflcl1 zscorecat2 cflcl1z tanglcl1 lasslcl1 nwlcl1 m
+> blcl1 q_salesvar cfvar spind exch lfirmage if randomsample==1, cluster(gvkey) robust;
+i.sic             _Isic_1-8           (naturally coded; _Isic_1 omitted)
+
+Linear regression                                      Number of obs =    1906
+                                                       F( 25,   299) =   27.06
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.3818
+Number of clusters (gvkey) = 300                       Root MSE      =  .29537
+
+------------------------------------------------------------------------------
+             |               Robust
+  liq_lineun |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |   .0857287    .028169     3.04   0.003      .030294    .1411633
+      yd1997 |   .1145321   .0267556     4.28   0.000     .0618789    .1671852
+      yd1998 |    .123935   .0254716     4.87   0.000     .0738087    .1740612
+      yd1999 |   .0966447   .0233309     4.14   0.000     .0507312    .1425582
+      yd2000 |   .0859307   .0241627     3.56   0.000     .0383802    .1334812
+      yd2001 |   .0562308   .0203746     2.76   0.006     .0161351    .0963265
+      yd2002 |   .0353873    .016435     2.15   0.032     .0030444    .0677302
+      yd2003 |  (dropped)
+     _Isic_2 |   -.055768   .0714919    -0.78   0.436     -.196459    .0849229
+     _Isic_3 |  -.0819255   .0675236    -1.21   0.226    -.2148073    .0509562
+     _Isic_4 |  -.0269654   .0861478    -0.31   0.754    -.1964983    .1425675
+     _Isic_5 |  -.0888043     .07298    -1.22   0.225    -.2324239    .0548152
+     _Isic_7 |  -.2412115   .0710828    -3.39   0.001    -.3810974   -.1013255
+     _Isic_8 |  -.0484173   .0762451    -0.64   0.526    -.1984623    .1016278
+      cflcl1 |    .080994   .0388478     2.08   0.038     .0045443    .1574438
+  zscorecat2 |    .190635    .039324     4.85   0.000      .113248    .2680219
+     cflcl1z |  -.4515276    .147892    -3.05   0.002    -.7425687   -.1604866
+    tanglcl1 |   .0643344   .0670667     0.96   0.338    -.0676482    .1963171
+    lasslcl1 |   .0556565   .0093966     5.92   0.000     .0371645    .0741484
+      nwlcl1 |  -.0827172   .0540392    -1.53   0.127    -.1890626    .0236282
+      mblcl1 |  -.0213535   .0035088    -6.09   0.000    -.0282586   -.0144483
+  q_salesvar |   .8883588   .3925619     2.26   0.024     .1158246    1.660893
+       cfvar |  -.2249171   .1122982    -2.00   0.046     -.445912   -.0039223
+       spind |   .0349938   .0370401     0.94   0.346    -.0378986    .1078861
+        exch |   .0438984   .0419276     1.05   0.296    -.0386121     .126409
+    lfirmage |  -.0246157   .0172915    -1.42   0.156    -.0586441    .0094127
+       _cons |   .2266517    .112127     2.02   0.044     .0059937    .4473097
+------------------------------------------------------------------------------
+
+. preserve;
+
+. keep if randomsample==1;
+(26539 observations deleted)
+
+. *TABLE 6;
+. areg def yd* cf_ if lineofcredit_rs==1, absorb(gvkey) cluster(gvkey) robust;
+
+Linear regression, absorbing indicators                Number of obs =    1428
+                                                       F(  8,   254) =    4.78
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.3532
+                                                       Adj R-squared =  0.2078
+                                                       Root MSE      =   .2746
+
+                                (Std. Err. adjusted for 255 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+         def |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |  -.0046746   .0237715    -0.20   0.844    -.0514889    .0421397
+      yd1998 |    .023991   .0275499     0.87   0.385    -.0302643    .0782463
+      yd1999 |   .0270551   .0287366     0.94   0.347    -.0295373    .0836475
+      yd2000 |   .0615795   .0322184     1.91   0.057    -.0018698    .1250288
+      yd2001 |   .0535142   .0341305     1.57   0.118    -.0137006    .1207291
+      yd2002 |   .0180342   .0347005     0.52   0.604    -.0503031    .0863715
+      yd2003 |   .0150125   .0342638     0.44   0.662    -.0524648    .0824899
+         cf_ |  -.5772894   .1048506    -5.51   0.000    -.7837767   -.3708021
+       _cons |   .1591148   .0241401     6.59   0.000     .1115745     .206655
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (255 categories)
+
+. areg def yd* cf_ bd nw cr mb lass if lineofcredit_rs==1, absorb(gvkey) cluster(gvkey) ro
+> bust;
+
+Linear regression, absorbing indicators                Number of obs =    1387
+                                                       F( 13,   248) =    6.30
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.3848
+                                                       Adj R-squared =  0.2420
+                                                       Root MSE      =  .26809
+
+                                (Std. Err. adjusted for 249 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+         def |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |  -.0117265    .024859    -0.47   0.638    -.0606882    .0372352
+      yd1998 |  -.0036932   .0297262    -0.12   0.901    -.0622413    .0548548
+      yd1999 |  -.0073292   .0305902    -0.24   0.811    -.0675789    .0529204
+      yd2000 |   .0192668   .0342056     0.56   0.574    -.0481038    .0866373
+      yd2001 |   .0160601   .0361971     0.44   0.658    -.0552328     .087353
+      yd2002 |  -.0162994   .0398354    -0.41   0.683    -.0947583    .0621594
+      yd2003 |  -.0126174   .0424407    -0.30   0.766    -.0962076    .0709729
+         cf_ |  -.4873754   .1121354    -4.35   0.000    -.7082346   -.2665163
+          bd |   .5921068   .2461696     2.41   0.017     .1072572    1.076956
+          nw |  -.0073615   .2423643    -0.03   0.976    -.4847162    .4699932
+          cr |  -.0068327   .0101494    -0.67   0.501    -.0268227    .0131573
+          mb |  -.0030059   .0076163    -0.39   0.693    -.0180067    .0119949
+        lass |   .0333792   .0289885     1.15   0.251    -.0237158    .0904742
+       _cons |  -.1273491   .2238671    -0.57   0.570    -.5682722    .3135741
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (249 categories)
+
+. areg linetot_ yd* defl1 cf_l1 bdl1 nwl1 crl1 mbl1 lassl1 if lineofcredit_rsl1==1, absorb
+> (gvkey) cluster(gvkey) robust;
+
+Linear regression, absorbing indicators                Number of obs =    1174
+                                                       F( 13,   245) =    4.79
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.6974
+                                                       Adj R-squared =  0.6121
+                                                       Root MSE      =  .11811
+
+                                (Std. Err. adjusted for 246 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    linetot_ |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |  (dropped)
+      yd1998 |   .0100197    .015162     0.66   0.509    -.0198448    .0398842
+      yd1999 |    .005919   .0177868     0.33   0.740    -.0291154    .0409535
+      yd2000 |   .0119236   .0177432     0.67   0.502    -.0230252    .0468723
+      yd2001 |   .0007455    .019673     0.04   0.970    -.0380044    .0394953
+      yd2002 |  -.0088962   .0222051    -0.40   0.689    -.0526334    .0348411
+      yd2003 |  -.0028828   .0245387    -0.12   0.907    -.0512166     .045451
+       defl1 |   -.041134     .01792    -2.30   0.023    -.0764308   -.0058372
+       cf_l1 |   .0712877   .0456987     1.56   0.120    -.0187247    .1613002
+        bdl1 |   .0049664   .1643999     0.03   0.976    -.3188511     .328784
+        nwl1 |   .0142604   .1407312     0.10   0.919    -.2629369    .2914577
+        crl1 |  -.0007324   .0043215    -0.17   0.866    -.0092444    .0077795
+        mbl1 |    .010337   .0050907     2.03   0.043     .0003099    .0203642
+      lassl1 |  -.1163609   .0250627    -4.64   0.000    -.1657268    -.066995
+       _cons |   .8352491   .1466795     5.69   0.000     .5463353    1.124163
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (246 categories)
+
+. areg lineun_ yd* defl1 cf_l1 bdl1 nwl1 crl1 mbl1 lassl1 if lineofcredit_rsl1==1, absorb(
+> gvkey) cluster(gvkey) robust;
+
+Linear regression, absorbing indicators                Number of obs =    1174
+                                                       F( 13,   245) =    4.17
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.6650
+                                                       Adj R-squared =  0.5705
+                                                       Root MSE      =  .08669
+
+                                (Std. Err. adjusted for 246 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+     lineun_ |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |  (dropped)
+      yd1998 |  -.0085372   .0101323    -0.84   0.400    -.0284948    .0114204
+      yd1999 |  -.0212188    .012422    -1.71   0.089    -.0456864    .0032487
+      yd2000 |  -.0096061   .0127307    -0.75   0.451    -.0346816    .0154694
+      yd2001 |   -.004946   .0129412    -0.38   0.703    -.0304363    .0205443
+      yd2002 |  -.0125777   .0144534    -0.87   0.385    -.0410464    .0158911
+      yd2003 |    .002306   .0165082     0.14   0.889    -.0302101    .0348221
+       defl1 |  -.0359818   .0106728    -3.37   0.001    -.0570041   -.0149596
+       cf_l1 |    .061925   .0391288     1.58   0.115    -.0151467    .1389967
+        bdl1 |  -.0122636   .1090641    -0.11   0.911    -.2270864    .2025593
+        nwl1 |   .0160063   .0953508     0.17   0.867    -.1718056    .2038183
+        crl1 |   .0019516   .0037636     0.52   0.605    -.0054615    .0093648
+        mbl1 |   .0021946   .0040471     0.54   0.588    -.0057769    .0101662
+      lassl1 |  -.0871483     .01807    -4.82   0.000    -.1227407    -.051556
+       _cons |   .6135907   .1163399     5.27   0.000     .3844368    .8427446
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (246 categories)
+
+. areg liq_linetot yd* defl1 cf_l1 bdl1 nwl1 crl1 mbl1 lassl1 if lineofcredit_rsl1==1, abs
+> orb(gvkey) cluster(gvkey) robust;
+
+Linear regression, absorbing indicators                Number of obs =    1174
+                                                       F( 13,   245) =    4.34
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.7916
+                                                       Adj R-squared =  0.7328
+                                                       Root MSE      =  .16167
+
+                                (Std. Err. adjusted for 246 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+ liq_linetot |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |  (dropped)
+      yd1998 |   .0131316   .0208992     0.63   0.530    -.0280333    .0542966
+      yd1999 |   .0030951   .0243801     0.13   0.899    -.0449262    .0511164
+      yd2000 |   .0020468   .0275212     0.07   0.941    -.0521616    .0562552
+      yd2001 |  -.0390705    .032925    -1.19   0.237    -.1039227    .0257817
+      yd2002 |  -.0692501   .0344434    -2.01   0.045    -.1370931   -.0014071
+      yd2003 |  -.1087883   .0374944    -2.90   0.004    -.1826407   -.0349359
+       defl1 |  -.0700102   .0271118    -2.58   0.010    -.1234122   -.0166082
+       cf_l1 |   .0730393   .0541374     1.35   0.179    -.0335947    .1796734
+        bdl1 |    .381475   .1933564     1.97   0.050     .0006221     .762328
+        nwl1 |    .257062   .1689917     1.52   0.130    -.0757999    .5899239
+        crl1 |  -.0219893    .007627    -2.88   0.004    -.0370122   -.0069664
+        mbl1 |  -.0014106   .0046974    -0.30   0.764     -.010663    .0078418
+      lassl1 |   .0082766   .0254286     0.33   0.745      -.04181    .0583632
+       _cons |   .4748582   .1460211     3.25   0.001     .1872414     .762475
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (246 categories)
+
+. areg liq_lineun yd* defl1 cf_l1 bdl1 nwl1 crl1 mbl1 lassl1 if lineofcredit_rsl1==1, abso
+> rb(gvkey) cluster(gvkey) robust;
+
+Linear regression, absorbing indicators                Number of obs =    1172
+                                                       F( 13,   245) =    2.93
+                                                       Prob > F      =  0.0005
+                                                       R-squared     =  0.7232
+                                                       Adj R-squared =  0.6450
+                                                       Root MSE      =  .19319
+
+                                (Std. Err. adjusted for 246 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+  liq_lineun |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      yd1996 |  (dropped)
+      yd1997 |   .0893213   .0380181     2.35   0.020     .0144372    .1642054
+      yd1998 |   .0931337   .0342081     2.72   0.007     .0257542    .1605131
+      yd1999 |   .0669071   .0317469     2.11   0.036     .0043754    .1294387
+      yd2000 |   .0683093   .0300832     2.27   0.024     .0090547     .127564
+      yd2001 |   .0614992   .0257176     2.39   0.018     .0108433    .1121551
+      yd2002 |   .0202206   .0230159     0.88   0.381    -.0251136    .0655548
+      yd2003 |  (dropped)
+       defl1 |  -.1222445   .0376304    -3.25   0.001    -.1963649   -.0481242
+       cf_l1 |   .0890438   .0657091     1.36   0.177     -.040383    .2184706
+        bdl1 |   .1766494   .2131244     0.83   0.408    -.2431405    .5964393
+        nwl1 |    .152119   .1740895     0.87   0.383     -.190784     .495022
+        crl1 |  -.0182351   .0082878    -2.20   0.029    -.0345595   -.0019106
+        mbl1 |  -.0100808   .0056183    -1.79   0.074     -.021147    .0009854
+      lassl1 |  -.0161032   .0297045    -0.54   0.588     -.074612    .0424056
+       _cons |    .556706   .1994909     2.79   0.006       .16377    .9496419
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (246 categories)
+
+. *FIGURE 2;
+. sort gvkey yeara;
+
+. table deftime, c(mean linetot_ mean line_ mean lineun_);
+
+----------------------------------------------------------
+  deftime | mean(linetot_)     mean(line_)   mean(lineun_)
+----------+-----------------------------------------------
+       -3 |        .265871        .0986185        .1793989
+       -2 |       .2815236         .100376        .1765238
+       -1 |       .2836996        .1217746        .1650405
+        0 |       .2594203          .13394        .1211426
+        1 |        .197146         .111027        .0860584
+        2 |        .196443        .1066089        .0891721
+        3 |       .1972965        .1045018        .0927947
+----------------------------------------------------------
+
+. restore;
+
+. *SECTION 5: Financial constraints;
+. *NEW CATEGORIZATION: HAVE LINE OF CREDIT AND HIGH EARNINGS;
+. *TABLE 7;
+. pwcorr line_uns payoutgroup sizegroup rhigh chigh, sig;
+
+             | line_uns payout~p sizegr~p    rhigh    chigh
+-------------+---------------------------------------------
+    line_uns |   1.0000
+             |
+             |
+ payoutgroup |   0.0870   1.0000
+             |   0.0003
+             |
+   sizegroup |   0.1890   0.4441   1.0000
+             |   0.0000   0.0000
+             |
+       rhigh |   0.1817   0.2888   0.6832   1.0000
+             |   0.0000   0.0000   0.0000
+             |
+       chigh |   0.2589   0.3183   0.4713   0.5178   1.0000
+             |   0.0000   0.0000   0.0000   0.0000
+             |
+
+. *TABLE 8:
+> *Column 1;
+. program drop _all;
+
+. program define temp;
+  1. xi: areg cashdiff i.yeara cf eoyq lass if `1'==1, absorb(gvkey) cluster(gvkey) robust
+> ;
+  2. xi: areg cashdiff i.yeara cf eoyq lass if `1'==0, absorb(gvkey) cluster(gvkey) robust
+> ;
+  3. end;
+
+. temp line_uncon;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =    4824
+                                                       F( 10,   731) =   11.03
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1287
+                                                       Adj R-squared = -0.0294
+                                                       Root MSE      =  .06492
+
+                                (Std. Err. adjusted for 732 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0025613    .004804    -0.53   0.594    -.0119926      .00687
+_Iyeara_1998 |  -.0074601   .0046395    -1.61   0.108    -.0165686    .0016483
+_Iyeara_1999 |  -.0043644   .0045917    -0.95   0.342    -.0133789    .0046501
+_Iyeara_2000 |   .0016637   .0045371     0.37   0.714    -.0072437    .0105711
+_Iyeara_2001 |   .0163424   .0047597     3.43   0.001     .0069982    .0256866
+_Iyeara_2002 |   .0140029   .0049913     2.81   0.005     .0042039    .0238019
+_Iyeara_2003 |   .0188371   .0052958     3.56   0.000     .0084402    .0292339
+          cf |   -.062082   .0450656    -1.38   0.169    -.1505554    .0263914
+        eoyq |   .0016317   .0029497     0.55   0.580    -.0041593    .0074227
+        lass |  -.0005791   .0056972    -0.10   0.919    -.0117639    .0106058
+       _cons |   .0107391   .0379415     0.28   0.777    -.0637481    .0852264
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (732 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   23592
+                                                       F( 10,  3770) =   33.47
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1236
+                                                       Adj R-squared = -0.0437
+                                                       Root MSE      =  .11736
+
+                               (Std. Err. adjusted for 3771 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0035457   .0036793    -0.96   0.335    -.0107594     .003668
+_Iyeara_1998 |    -.00706   .0034623    -2.04   0.042    -.0138481   -.0002719
+_Iyeara_1999 |   .0039261   .0035708     1.10   0.272    -.0030749     .010927
+_Iyeara_2000 |   .0041612   .0036271     1.15   0.251    -.0029501    .0112724
+_Iyeara_2001 |   .0272856   .0036986     7.38   0.000     .0200341     .034537
+_Iyeara_2002 |   .0243665   .0036288     6.71   0.000     .0172519    .0314811
+_Iyeara_2003 |    .032847   .0036756     8.94   0.000     .0256406    .0400533
+          cf |   .0846713   .0102509     8.26   0.000     .0645734    .1047691
+        eoyq |   .0038657   .0010142     3.81   0.000     .0018774    .0058541
+        lass |  -.0075811   .0025333    -2.99   0.003    -.0125479   -.0026143
+       _cons |   .0113408   .0123623     0.92   0.359    -.0128967    .0355784
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (3771 categories)
+
+. temp phigh;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   10548
+                                                       F( 10,  3036) =   10.98
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.3020
+                                                       Adj R-squared =  0.0185
+                                                       Root MSE      =  .09648
+
+                               (Std. Err. adjusted for 3037 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0030882   .0050388    -0.61   0.540     -.012968    .0067916
+_Iyeara_1998 |  -.0097147   .0048821    -1.99   0.047    -.0192872   -.0001422
+_Iyeara_1999 |  -.0015626   .0051368    -0.30   0.761    -.0116345    .0085093
+_Iyeara_2000 |    .002568   .0052328     0.49   0.624    -.0076922    .0128283
+_Iyeara_2001 |   .0189838    .005388     3.52   0.000     .0084193    .0295483
+_Iyeara_2002 |   .0221828   .0055243     4.02   0.000     .0113512    .0330145
+_Iyeara_2003 |   .0304647   .0056586     5.38   0.000     .0193697    .0415597
+          cf |   .1095955   .0252991     4.33   0.000     .0599903    .1592007
+        eoyq |   .0038481   .0019214     2.00   0.045     .0000808    .0076154
+        lass |  -.0058797    .005383    -1.09   0.275    -.0164344     .004675
+       _cons |   .0056863   .0313011     0.18   0.856    -.0556873    .0670599
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (3037 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   12317
+                                                       F( 10,  3179) =   12.28
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.2084
+                                                       Adj R-squared = -0.0682
+                                                       Root MSE      =  .13199
+
+                               (Std. Err. adjusted for 3180 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0045988   .0064742    -0.71   0.478    -.0172929    .0080952
+_Iyeara_1998 |  -.0079743   .0063434    -1.26   0.209     -.020412    .0044633
+_Iyeara_1999 |   .0046536   .0065465     0.71   0.477    -.0081821    .0174894
+_Iyeara_2000 |    .002495   .0067022     0.37   0.710    -.0106461     .015636
+_Iyeara_2001 |   .0290808   .0065432     4.44   0.000     .0162516    .0419101
+_Iyeara_2002 |   .0252934   .0065198     3.88   0.000       .01251    .0380768
+_Iyeara_2003 |   .0328081   .0065651     5.00   0.000     .0199357    .0456804
+          cf |   .0885137   .0142346     6.22   0.000     .0606038    .1164236
+        eoyq |   .0038398   .0014812     2.59   0.010     .0009356     .006744
+        lass |  -.0079154   .0042576    -1.86   0.063    -.0162633    .0004325
+       _cons |   .0077074    .017407     0.44   0.658    -.0264226    .0418374
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (3180 categories)
+
+. temp shigh;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   14228
+                                                       F( 10,  2464) =   16.14
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1786
+                                                       Adj R-squared =  0.0057
+                                                       Root MSE      =  .08212
+
+                               (Std. Err. adjusted for 2465 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |   .0005222   .0032476     0.16   0.872    -.0058462    .0068906
+_Iyeara_1998 |  -.0050108   .0029922    -1.67   0.094    -.0108784    .0008567
+_Iyeara_1999 |   .0044888   .0031665     1.42   0.156    -.0017204    .0106981
+_Iyeara_2000 |   .0030763   .0032361     0.95   0.342    -.0032695    .0094221
+_Iyeara_2001 |   .0245727   .0033893     7.25   0.000     .0179265     .031219
+_Iyeara_2002 |   .0200611   .0034117     5.88   0.000     .0133709    .0267513
+_Iyeara_2003 |   .0224053   .0035775     6.26   0.000     .0153901    .0294205
+          cf |  -.0229401   .0266669    -0.86   0.390     -.075232    .0293518
+        eoyq |   .0027259   .0017641     1.55   0.122    -.0007335    .0061853
+        lass |   -.011884   .0033199    -3.58   0.000     -.018394   -.0053739
+       _cons |   .0695911   .0227866     3.05   0.002     .0249083     .114274
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (2465 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   14188
+                                                       F( 10,  2735) =   21.97
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1641
+                                                       Adj R-squared = -0.0365
+                                                       Root MSE      =  .13089
+
+                               (Std. Err. adjusted for 2736 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0070303   .0055682    -1.26   0.207    -.0179486    .0038881
+_Iyeara_1998 |  -.0084632   .0053744    -1.57   0.115    -.0190015     .002075
+_Iyeara_1999 |   .0026089   .0054125     0.48   0.630     -.008004    .0132219
+_Iyeara_2000 |   .0070897   .0054959     1.29   0.197    -.0036867    .0178662
+_Iyeara_2001 |   .0257558   .0055417     4.65   0.000     .0148894    .0366223
+_Iyeara_2002 |     .02287   .0055085     4.15   0.000     .0120688    .0336712
+_Iyeara_2003 |   .0381677   .0055806     6.84   0.000      .027225    .0491104
+          cf |   .0957997   .0116262     8.24   0.000     .0730026    .1185967
+        eoyq |    .004316   .0012403     3.48   0.001     .0018839     .006748
+        lass |   -.005782   .0040368    -1.43   0.152    -.0136974    .0021335
+       _cons |  -.0055462   .0140576    -0.39   0.693    -.0331108    .0220184
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (2736 categories)
+
+. temp rhigh;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =    7793
+                                                       F( 10,  1126) =    8.69
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.0821
+                                                       Adj R-squared = -0.0746
+                                                       Root MSE      =  .07036
+
+                               (Std. Err. adjusted for 1127 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0019107   .0038953    -0.49   0.624    -.0095535    .0057322
+_Iyeara_1998 |  -.0034125   .0036642    -0.93   0.352    -.0106018    .0037769
+_Iyeara_1999 |   .0009673   .0036526     0.26   0.791    -.0061993    .0081339
+_Iyeara_2000 |   .0021526    .003431     0.63   0.531    -.0045793    .0088845
+_Iyeara_2001 |    .015786   .0036383     4.34   0.000     .0086474    .0229247
+_Iyeara_2002 |   .0126004   .0038354     3.29   0.001      .005075    .0201258
+_Iyeara_2003 |   .0166637   .0039682     4.20   0.000     .0088778    .0244497
+          cf |   .0159369   .0272449     0.58   0.559    -.0375196    .0693934
+        eoyq |   .0014229   .0021436     0.66   0.507     -.002783    .0056289
+        lass |  -.0027264   .0036116    -0.75   0.450    -.0098126    .0043598
+       _cons |   .0118671    .027594     0.43   0.667    -.0422743    .0660085
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (1127 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   20623
+                                                       F( 10,  3375) =   33.03
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1293
+                                                       Adj R-squared = -0.0417
+                                                       Root MSE      =   .1221
+
+                               (Std. Err. adjusted for 3376 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0040525   .0041793    -0.97   0.332    -.0122468    .0041417
+_Iyeara_1998 |  -.0088931   .0039214    -2.27   0.023    -.0165816   -.0012046
+_Iyeara_1999 |   .0030682   .0040187     0.76   0.445     -.004811    .0109475
+_Iyeara_2000 |   .0045538    .004118     1.11   0.269    -.0035203    .0126278
+_Iyeara_2001 |   .0293811   .0041808     7.03   0.000     .0211839    .0375783
+_Iyeara_2002 |   .0267267   .0041032     6.51   0.000     .0186816    .0347717
+_Iyeara_2003 |   .0363811   .0041881     8.69   0.000     .0281696    .0445926
+          cf |   .0864177   .0106205     8.14   0.000     .0655944    .1072411
+        eoyq |   .0039607   .0010579     3.74   0.000     .0018865    .0060349
+        lass |  -.0080769   .0029367    -2.75   0.006    -.0138347    -.002319
+       _cons |   .0062146   .0124388     0.50   0.617    -.0181736    .0306029
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (3376 categories)
+
+. temp chigh;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =    2705
+                                                       F( 10,   370) =    5.92
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.0805
+                                                       Adj R-squared = -0.0698
+                                                       Root MSE      =  .04477
+
+                                (Std. Err. adjusted for 371 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0037133    .004105    -0.90   0.366    -.0117853    .0043588
+_Iyeara_1998 |   -.005712   .0038662    -1.48   0.140    -.0133144    .0018904
+_Iyeara_1999 |   .0007298   .0036062     0.20   0.840    -.0063614    .0078211
+_Iyeara_2000 |  -.0005702   .0037275    -0.15   0.879    -.0078999    .0067595
+_Iyeara_2001 |    .010291    .003854     2.67   0.008     .0027125    .0178695
+_Iyeara_2002 |   .0140908   .0042631     3.31   0.001     .0057079    .0224737
+_Iyeara_2003 |   .0129081   .0045583     2.83   0.005     .0039447    .0218715
+          cf |  -.0468092   .0465713    -1.01   0.316    -.1383869    .0447685
+        eoyq |   .0042183   .0029254     1.44   0.150    -.0015343    .0099709
+        lass |  -.0064232   .0044663    -1.44   0.151    -.0152057    .0023592
+       _cons |   .0547538   .0379443     1.44   0.150    -.0198598    .1293674
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (371 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   25711
+                                                       F( 10,  4131) =   37.38
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1245
+                                                       Adj R-squared = -0.0436
+                                                       Root MSE      =  .11506
+
+                               (Std. Err. adjusted for 4132 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0034121    .003505    -0.97   0.330    -.0102839    .0034596
+_Iyeara_1998 |  -.0073296   .0033059    -2.22   0.027    -.0138109   -.0008483
+_Iyeara_1999 |   .0030018   .0034103     0.88   0.379    -.0036842    .0096878
+_Iyeara_2000 |   .0045087   .0034487     1.31   0.191    -.0022526    .0112701
+_Iyeara_2001 |    .027635    .003544     7.80   0.000     .0206869    .0345831
+_Iyeara_2002 |   .0243821    .003487     6.99   0.000     .0175457    .0312186
+_Iyeara_2003 |   .0335208   .0035579     9.42   0.000     .0265454    .0404963
+          cf |   .0822583   .0101571     8.10   0.000      .062345    .1021717
+        eoyq |   .0036038   .0009854     3.66   0.000     .0016718    .0055358
+        lass |  -.0070125   .0025009    -2.80   0.005    -.0119155   -.0021095
+       _cons |   .0069718   .0118029     0.59   0.555    -.0161682    .0301117
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (4132 categories)
+
+. *Column 2, 3, 4, row 2;
+. xi: areg cashdiff i.yeara cf eoyq lass if highcf==0 & line_uncon==0, absorb(gvkey) clust
+> er(gvkey) robust;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   22478
+                                                       F( 10,  3606) =   32.47
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1235
+                                                       Adj R-squared = -0.0446
+                                                       Root MSE      =  .11875
+
+                               (Std. Err. adjusted for 3607 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0032587   .0038184    -0.85   0.393    -.0107451    .0042277
+_Iyeara_1998 |  -.0071086   .0035924    -1.98   0.048     -.014152   -.0000652
+_Iyeara_1999 |   .0048269   .0036887     1.31   0.191    -.0024053    .0120591
+_Iyeara_2000 |   .0048659   .0037599     1.29   0.196    -.0025059    .0122376
+_Iyeara_2001 |   .0280129   .0038229     7.33   0.000     .0205176    .0355082
+_Iyeara_2002 |    .025422   .0037507     6.78   0.000     .0180684    .0327757
+_Iyeara_2003 |   .0331922   .0037929     8.75   0.000     .0257559    .0406286
+          cf |     .08519   .0103062     8.27   0.000     .0649834    .1053966
+        eoyq |   .0040087   .0010356     3.87   0.000     .0019782    .0060392
+        lass |  -.0076203   .0025769    -2.96   0.003    -.0126727   -.0025679
+       _cons |   .0111163   .0125259     0.89   0.375    -.0134423    .0356749
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (3607 categories)
+
+. xi: areg cashdiff i.yeara cf eoyq lass if linealways==1 & line_uncon==0, absorb(gvkey) c
+> luster(gvkey) robust;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   14013
+                                                       F( 10,  2196) =   27.15
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1253
+                                                       Adj R-squared = -0.0381
+                                                       Root MSE      =  .09576
+
+                               (Std. Err. adjusted for 2197 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |   .0011552   .0038854     0.30   0.766    -.0064642    .0087746
+_Iyeara_1998 |    -.00949   .0037096    -2.56   0.011    -.0167646   -.0022153
+_Iyeara_1999 |   .0082402   .0035504     2.32   0.020     .0012778    .0152026
+_Iyeara_2000 |   .0055254    .003715     1.49   0.137    -.0017598    .0128107
+_Iyeara_2001 |   .0316105   .0038205     8.27   0.000     .0241184    .0391026
+_Iyeara_2002 |   .0259278   .0037154     6.98   0.000     .0186417    .0332139
+_Iyeara_2003 |   .0312853   .0038259     8.18   0.000     .0237826     .038788
+          cf |   .0628049   .0163908     3.83   0.000     .0306618    .0949481
+        eoyq |   .0054103    .001767     3.06   0.002     .0019452    .0088755
+        lass |  -.0111227   .0030136    -3.69   0.000    -.0170326   -.0052128
+       _cons |   .0315437   .0166907     1.89   0.059    -.0011876     .064275
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (2197 categories)
+
+. xi: areg cashdiff i.yeara cf eoyq lass if highcf==1 & line_uncon==0, absorb(gvkey) clust
+> er(gvkey) robust;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =    1114
+                                                       F( 10,   163) =    1.91
+                                                       Prob > F      =  0.0466
+                                                       R-squared     =  0.1357
+                                                       Adj R-squared = -0.0234
+                                                       Root MSE      =  .08514
+
+                                (Std. Err. adjusted for 164 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0080502   .0123455    -0.65   0.515    -.0324279    .0163275
+_Iyeara_1998 |  -.0058018    .011337    -0.51   0.610    -.0281882    .0165846
+_Iyeara_1999 |  -.0153747   .0128146    -1.20   0.232    -.0406787    .0099294
+_Iyeara_2000 |   -.011134   .0122912    -0.91   0.366    -.0354045    .0131364
+_Iyeara_2001 |   .0116098   .0131431     0.88   0.378    -.0143429    .0375625
+_Iyeara_2002 |   .0008243   .0125022     0.07   0.948    -.0238627    .0255114
+_Iyeara_2003 |   .0221574     .01276     1.74   0.084    -.0030388    .0473537
+          cf |   .0278439   .0971965     0.29   0.775    -.1640826    .2197705
+        eoyq |  -.0003714   .0050116    -0.07   0.941    -.0102675    .0095247
+        lass |  -.0034179   .0108289    -0.32   0.753     -.024801    .0179652
+       _cons |   .0147885   .0626619     0.24   0.814    -.1089452    .1385221
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (164 categories)
+
+. *Columns 2,3, all other rows;
+. program drop _all;
+
+. program define temp;
+  1. xi: areg cashdiff i.yeara cf eoyq lass if `1'==0 & line_uncon==0, absorb(gvkey) clust
+> er(gvkey) robust;
+  2. xi: areg cashdiff i.yeara cf eoyq lass if `1'==0 & line_uncon==1, absorb(gvkey) clust
+> er(gvkey) robust;
+  3. end;
+
+. temp phigh;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   11324
+                                                       F( 10,  2873) =   11.77
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.2059
+                                                       Adj R-squared = -0.0654
+                                                       Root MSE      =   .1355
+
+                               (Std. Err. adjusted for 2874 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0060336   .0069582    -0.87   0.386    -.0196772      .00761
+_Iyeara_1998 |   -.009265   .0067418    -1.37   0.169    -.0224843    .0039542
+_Iyeara_1999 |   .0029536   .0069297     0.43   0.670    -.0106341    .0165413
+_Iyeara_2000 |   .0022921   .0070687     0.32   0.746    -.0115683    .0161524
+_Iyeara_2001 |   .0293373   .0069032     4.25   0.000     .0158015    .0428731
+_Iyeara_2002 |   .0240473   .0068679     3.50   0.000     .0105809    .0375138
+_Iyeara_2003 |   .0315752   .0068799     4.59   0.000     .0180851    .0450653
+          cf |   .0897314   .0142696     6.29   0.000     .0617518    .1177111
+        eoyq |   .0039302   .0015088     2.60   0.009     .0009718    .0068886
+        lass |   -.008499   .0043566    -1.95   0.051    -.0170415    .0000434
+       _cons |   .0106249   .0175291     0.61   0.544    -.0237459    .0449957
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (2874 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =     993
+                                                       F( 10,   305) =    2.03
+                                                       Prob > F      =  0.0300
+                                                       R-squared     =  0.2983
+                                                       Adj R-squared = -0.0281
+                                                       Root MSE      =  .07631
+
+                                (Std. Err. adjusted for 306 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |   .0098886   .0135482     0.73   0.466    -.0167711    .0365484
+_Iyeara_1998 |   .0054726   .0151973     0.36   0.719    -.0244323    .0353775
+_Iyeara_1999 |   .0198356   .0162807     1.22   0.224    -.0122011    .0518722
+_Iyeara_2000 |  -.0032996   .0178204    -0.19   0.853     -.038366    .0317668
+_Iyeara_2001 |   .0146547   .0177607     0.83   0.410    -.0202943    .0496037
+_Iyeara_2002 |   .0292267   .0189585     1.54   0.124    -.0080794    .0665327
+_Iyeara_2003 |   .0328857   .0198409     1.66   0.098    -.0061565     .071928
+          cf |  -.0769233   .1214334    -0.63   0.527    -.3158766    .1620299
+        eoyq |   .0027302   .0059778     0.46   0.648    -.0090327    .0144931
+        lass |   .0040855   .0166526     0.25   0.806     -.028683     .036854
+       _cons |  -.0240602   .0892773    -0.27   0.788    -.1997376    .1516172
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (306 categories)
+
+. temp shigh;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   13056
+                                                       F( 10,  2501) =   20.53
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1629
+                                                       Adj R-squared = -0.0365
+                                                       Root MSE      =  .13434
+
+                               (Std. Err. adjusted for 2502 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0070207   .0060002    -1.17   0.242    -.0187865    .0047452
+_Iyeara_1998 |  -.0078964   .0057518    -1.37   0.170    -.0191751    .0033823
+_Iyeara_1999 |   .0032914   .0057906     0.57   0.570    -.0080635    .0146463
+_Iyeara_2000 |   .0069931   .0058811     1.19   0.235    -.0045392    .0185253
+_Iyeara_2001 |   .0261229   .0058806     4.44   0.000     .0145917    .0376542
+_Iyeara_2002 |   .0231608   .0058569     3.95   0.000     .0116759    .0346458
+_Iyeara_2003 |   .0384968   .0059306     6.49   0.000     .0268674    .0501263
+          cf |   .0962954   .0117293     8.21   0.000     .0732953    .1192954
+        eoyq |   .0045063   .0012709     3.55   0.000     .0020142    .0069984
+        lass |  -.0054283   .0041337    -1.31   0.189    -.0135341    .0026775
+       _cons |  -.0065705   .0143543    -0.46   0.647    -.0347181    .0215771
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (2502 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =    1132
+                                                       F( 10,   233) =    2.74
+                                                       Prob > F      =  0.0033
+                                                       R-squared     =  0.2056
+                                                       Adj R-squared = -0.0118
+                                                       Root MSE      =  .07979
+
+                                (Std. Err. adjusted for 234 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0019045   .0105933    -0.18   0.857    -.0227754    .0189665
+_Iyeara_1998 |  -.0084247   .0121022    -0.70   0.487    -.0322683     .015419
+_Iyeara_1999 |      .0008   .0115333     0.07   0.945    -.0219229    .0235229
+_Iyeara_2000 |   .0158623   .0119381     1.33   0.185     -.007658    .0393827
+_Iyeara_2001 |   .0294001   .0138908     2.12   0.035     .0020324    .0567678
+_Iyeara_2002 |   .0294205   .0141519     2.08   0.039     .0015384    .0573026
+_Iyeara_2003 |   .0442666   .0138705     3.19   0.002      .016939    .0715942
+          cf |   .0143779   .0833039     0.17   0.863    -.1497471     .178503
+        eoyq |  -.0008765   .0045149    -0.19   0.846    -.0097719    .0080188
+        lass |  -.0234876   .0151844    -1.55   0.123    -.0534038    .0064286
+       _cons |   .0824529    .064352     1.28   0.201    -.0443333    .2092391
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (234 categories)
+
+. temp rhigh;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   17802
+                                                       F( 10,  2932) =   28.89
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1286
+                                                       Adj R-squared = -0.0439
+                                                       Root MSE      =  .12813
+
+                               (Std. Err. adjusted for 2933 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0040523   .0047281    -0.86   0.391     -.013323    .0052184
+_Iyeara_1998 |  -.0090218   .0044189    -2.04   0.041    -.0176863   -.0003573
+_Iyeara_1999 |   .0037989   .0045193     0.84   0.401    -.0050625    .0126602
+_Iyeara_2000 |   .0043102   .0046243     0.93   0.351    -.0047569    .0133773
+_Iyeara_2001 |   .0297125   .0046565     6.38   0.000     .0205821    .0388428
+_Iyeara_2002 |   .0271104   .0045553     5.95   0.000     .0181784    .0360424
+_Iyeara_2003 |   .0372209   .0046243     8.05   0.000     .0281537     .046288
+          cf |   .0885139   .0107808     8.21   0.000     .0673752    .1096526
+        eoyq |   .0042171   .0010976     3.84   0.000     .0020649    .0063692
+        lass |  -.0084811   .0030769    -2.76   0.006    -.0145141    -.002448
+       _cons |   .0069061   .0127449     0.54   0.588    -.0180837    .0318958
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (2933 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =    2821
+                                                       F( 10,   442) =    6.75
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1402
+                                                       Adj R-squared = -0.0240
+                                                       Root MSE      =  .07379
+
+                                (Std. Err. adjusted for 443 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0036531   .0071518    -0.51   0.610    -.0177089    .0104026
+_Iyeara_1998 |  -.0082865   .0068798    -1.20   0.229    -.0218077    .0052348
+_Iyeara_1999 |  -.0040134   .0068978    -0.58   0.561      -.01757    .0095432
+_Iyeara_2000 |   .0035072   .0072902     0.48   0.631    -.0108205     .017835
+_Iyeara_2001 |   .0225855     .00737     3.06   0.002      .008101    .0370701
+_Iyeara_2002 |    .018112   .0080953     2.24   0.026     .0022018    .0340221
+_Iyeara_2003 |   .0226027   .0086105     2.63   0.009     .0056802    .0395252
+          cf |  -.0417641   .0631758    -0.66   0.509    -.1659264    .0823981
+        eoyq |   .0008261   .0041313     0.20   0.842    -.0072934    .0089456
+        lass |  -.0022742   .0085039    -0.27   0.789    -.0189872    .0144389
+       _cons |   .0144475   .0472833     0.31   0.760    -.0784805    .1073756
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (443 categories)
+
+. temp chigh;
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =   22048
+                                                       F( 10,  3555) =   32.24
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1240
+                                                       Adj R-squared = -0.0450
+                                                       Root MSE      =  .12085
+
+                               (Std. Err. adjusted for 3556 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0034515   .0039651    -0.87   0.384    -.0112256    .0043226
+_Iyeara_1998 |  -.0072992   .0037226    -1.96   0.050    -.0145978   -5.74e-07
+_Iyeara_1999 |   .0039499   .0038396     1.03   0.304    -.0035781    .0114779
+_Iyeara_2000 |   .0044902    .003889     1.15   0.248    -.0031348    .0121151
+_Iyeara_2001 |   .0283335    .003957     7.16   0.000     .0205754    .0360917
+_Iyeara_2002 |   .0249411   .0038769     6.43   0.000     .0173399    .0325423
+_Iyeara_2003 |   .0342801   .0039298     8.72   0.000     .0265752     .041985
+          cf |   .0850532   .0103187     8.24   0.000     .0648219    .1052844
+        eoyq |   .0038699   .0010248     3.78   0.000     .0018607    .0058791
+        lass |  -.0076356   .0026221    -2.91   0.004    -.0127766   -.0024947
+       _cons |    .008876   .0121312     0.73   0.464    -.0149089    .0326608
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                    (3556 categories)
+i.yeara           _Iyeara_1996-2003   (naturally coded; _Iyeara_1996 omitted)
+
+Linear regression, absorbing indicators                Number of obs =    3663
+                                                       F( 10,   575) =    8.66
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1340
+                                                       Adj R-squared = -0.0306
+                                                       Root MSE      =  .07069
+
+                                (Std. Err. adjusted for 576 clusters in gvkey)
+------------------------------------------------------------------------------
+             |               Robust
+    cashdiff |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+_Iyeara_1997 |  -.0027645    .006115    -0.45   0.651     -.014775    .0092459
+_Iyeara_1998 |  -.0079416   .0058318    -1.36   0.174    -.0193958    .0035127
+_Iyeara_1999 |  -.0054431   .0057685    -0.94   0.346    -.0167731    .0058868
+_Iyeara_2000 |   .0018747   .0058743     0.32   0.750    -.0096631    .0134124
+_Iyeara_2001 |   .0183514   .0060632     3.03   0.003     .0064426    .0302602
+_Iyeara_2002 |   .0145077   .0065422     2.22   0.027     .0016581    .0273572
+_Iyeara_2003 |   .0202158   .0068522     2.95   0.003     .0067574    .0336742
+          cf |  -.0495013   .0519409    -0.95   0.341    -.1515184    .0525159
+        eoyq |   .0006171   .0036495     0.17   0.866    -.0065509     .007785
+        lass |   .0004541   .0067088     0.07   0.946    -.0127227    .0136309
+       _cons |   .0034888   .0396395     0.09   0.930    -.0743671    .0813447
+-------------+----------------------------------------------------------------
+       gvkey |   absorbed                                     (576 categories)
+
+. log close;
+       log:  C:\Documents and Settings\asufi\My Documents\Work\lines\public\SUFI_RFS_LINES
+> OFCREDIT20070221.log
+  log type:  text
+ closed on:  27 Feb 2007, 16:51:44
+------------------------------------------------------------------------------------------
