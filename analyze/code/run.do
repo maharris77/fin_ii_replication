@@ -1,6 +1,6 @@
 use "../in/out.dta", clear
 
-*Sufi's code uses ";" delimiter; follow suit.
+*Sufi's code uses ";" as delimiter; follow suit.
 #delim ;
 
 *TABLE 1: SUMMARY STATISTICS;
