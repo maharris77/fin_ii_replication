@@ -19,7 +19,7 @@ gen tanglc = ppent / asslc
 gen nwlc = (asslc - lt) / asslc
 gen mblc = (asslc - (at - lt) + csho * prcc_f) / asslc
 foreach v of loc to_lag {
-	gen `v'll = l.`v'
+	gen `v'l1 = l.`v'
 	drop `v'
 }
 
