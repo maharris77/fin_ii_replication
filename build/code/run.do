@@ -20,7 +20,6 @@ gen nwlc = (asslc - lt) / asslc
 gen mblc = (asslc - (at - lt) + csho * prcc_f) / asslc
 foreach v of loc to_lag {
 	gen `v'l1 = l.`v'
-	drop `v'
 }
 
 **Make the sales-based volatility measure from quarterly data
@@ -60,6 +59,15 @@ restore
 merge 1:1 gvkey yeara using `tmp1'
 keep if _merge==3
 drop _merge
+
+**Make the Mackie-Mason CF variance measure
+sort gvkey yeara
+gen oibdp_diff = oibdp - l.oibdp
+rangestat (sd) oibdp_diff (mean) asslc, interval(yeara -4 -1) by(gvkey)
+gen cfvar = oibdp_diff_sd / asslc_mean
+
+**Make the "In an S&P index" variable
+
 
 * Save the result as temp file
 loc tmp2 "../tmp/compustat_built.dta"
