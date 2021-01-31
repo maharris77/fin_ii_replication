@@ -12,13 +12,12 @@ for i in ${tables[@]}; do
 done
 SCRIPT
 
-# Get the Stata files.
-# Clearer, but slower (no simultaneous download), to use /\{compq,compa\}.dta
-#   syntax and no loop.
+# Get the Stata files from server
 scp $WRDS:~/compustat_data/\{compq,compa,names\}.dta ${next}/in/
-#for i in "${tables[@]}"; do
-#  scp $WRDS:~/compustat_data/${i}.dta ${next}/in/ &
-#done
-#wait
+
+# Get the SPMIM variable that was removed from Compustat (ca. July 2020)
+# (But don't redownload if it's already in place)
+url="https://www.dropbox.com/s/ksrfg4i6shj6g61/SPMIM_data.dta?dl=1"
+wget -ncO ${next}/in/SPMIM_data.dta $url
 
 say "done"
