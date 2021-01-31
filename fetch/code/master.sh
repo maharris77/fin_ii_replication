@@ -15,9 +15,10 @@ SCRIPT
 # Get the Stata files.
 # Clearer, but slower (no simultaneous download), to use /\{compq,compa\}.dta
 #   syntax and no loop.
-for i in "${tables[@]}"; do
-  scp $WRDS:~/compustat_data/${i}.dta ${next}/in/ &
-done
-wait
+scp $WRDS:~/compustat_data/\{compq,compa,names\}.dta ${next}/in/
+#for i in "${tables[@]}"; do
+#  scp $WRDS:~/compustat_data/${i}.dta ${next}/in/ &
+#done
+#wait
 
 say "done"
