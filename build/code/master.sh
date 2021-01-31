@@ -23,6 +23,6 @@ rsync "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
 wait
 
 # Copy to next in dir (Would make symlink, but data access problems on Windows)
-cp $step/out/* $next/in/
+rsync $step/out/* $next/in/
 
 say "done"
