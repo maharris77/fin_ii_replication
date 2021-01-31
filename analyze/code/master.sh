@@ -7,8 +7,8 @@ in_dir="$step/in/"
 out_dir="$step/out/"
 
 # Copy necessary code and inputs to remote machine
-scp $step/code/*.do "$REMOTE:${remote_dir}${code_dir}" &
-scp $step/in/*.dta "$REMOTE:${remote_dir}${in_dir}" &
+rsync $step/code/*.do "$REMOTE:${remote_dir}${code_dir}" &
+rsync $step/in/*.dta "$REMOTE:${remote_dir}${in_dir}" &
 wait
 
 ssh -t $REMOTE << SCRIPT
@@ -17,7 +17,7 @@ ssh -t $REMOTE << SCRIPT
 SCRIPT
 
 # Copy outputs back to local machine
-scp "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
+rsync "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
 wait
 
 say "done"
