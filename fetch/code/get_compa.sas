@@ -17,7 +17,8 @@ libname tmp '/scratch/duke/mharris7/compustat_data';
 data home.compustat;
   /* This is the location of Compustatfundamental annual data */
   /* We also need to apply the same filteringswe did on the query page, see the where condition below*/
-  set comp.funda(where = ((CONSOL='C' and INDFMT='INDL' and DATAFMT='STD' and POPSRC='D') and (fyear>=1990 & fyear<=2018)));
+  set comp.funda(where = ((CONSOL='C' and INDFMT='INDL' and DATAFMT='STD' and POPSRC='D') and (fyear<=2008)));
+  /* NOTE: Going earlier than 1990 is overkill EXCEPT I need to estimate firm age... */
   keep gvkey fyear conm at che ppent dlc dltt lt sale oibdp prcc_f csho pstkl txditc dcvt exchg;
   * Note: Variable 'spmim' is unavailable in Duke's WRDS subscription.
 run;

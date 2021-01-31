@@ -17,7 +17,7 @@ libname tmp '/scratch/duke/mharris7/compustat_data';
 data home.compustat;
   /* This is the location of Compustatfundamental annual data */
   /* We also need to apply the same filteringswe did on the query page, see the where condition below*/
-  set comp.fundq(where = ((CONSOL='C' and INDFMT='INDL' and DATAFMT='STD' and POPSRC='D') and (fyearq>=1990 & fyearq<=2018)));
+  set comp.fundq(where = ((CONSOL='C' and INDFMT='INDL' and DATAFMT='STD' and POPSRC='D') and (fyearq>=1990 & fyearq<=2008)));
   keep gvkey fyearq fqtr conm atq saleq;
 run;
 
