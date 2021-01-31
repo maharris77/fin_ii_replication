@@ -1,0 +1,5 @@
+build/in/sufi_rfs_linesofcredit20070221data.dta filter=lfs diff=lfs merge=lfs -text
+build/tmp/compustat_built.dta filter=lfs diff=lfs merge=lfs -text
+build/in/compa.dta filter=lfs diff=lfs merge=lfs -text
+build/in/compq.dta filter=lfs diff=lfs merge=lfs -text
+build/in/names.dta filter=lfs diff=lfs merge=lfs -text
