@@ -19,6 +19,10 @@ drop if mi(gvkey) | mi(yeara)
 duplicates drop gvkey yeara, force
 xtset gvkey yeara, y
 
+**Zero-fill selected variables
+replace txditc=0 if mi(txditc)
+replace oibdp=0 if mi(oibdp)
+
 **Generate derived variables
 gen bd = (dlc + dltt) / at
 * Lagged cashless variables
