@@ -39,6 +39,8 @@ foreach v of loc to_log {
 foreach v of loc to_lag {
 	gen `v'l1 = l.`v'
 }
+* Cash (scaled by assets)
+gen cash = che / at
 
 **Make the sales-based volatility measure from quarterly data
 preserve
@@ -145,5 +147,8 @@ foreach y of local years {
 **Make sic code just one digit
 replace sic = substr(sic, 1, 1)
 destring sic, replace
+
+**Generate cash flow deciles
+xtile cfcat = cflc, nq(10)
 
 save "../out/out.dta", replace
