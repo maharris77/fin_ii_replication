@@ -55,7 +55,7 @@ estimates replay s1;
 estimates replay s2;
 
 esttab s1 s2 using ../tmp/table_1.tex, replace
-  cells((mean p50 sd))
+  cells((mean p50 sd)) collabels("Mean" "Median" "St. Dev.")
   title("Summary statistics.");
 
 *TABLE 3;
