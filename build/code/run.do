@@ -26,12 +26,16 @@ replace oibdp=0 if mi(oibdp)
 **Generate derived variables
 gen bd = (dlc + dltt) / at
 * Lagged cashless variables
-loc to_lag "cflc tanglc nwlc asslc mblc"
+loc to_log "asslc firmage"
+loc to_lag "cflc tanglc nwlc asslc mblc lasslc"
 gen asslc = at - che
 gen cflc = oibdp / asslc
 gen tanglc = ppent / asslc
 gen nwlc = (asslc - lt) / asslc
 gen mblc = (asslc - (at - lt - pstkl + txditc) + csho * prcc_f) / asslc
+foreach v of loc to_log {
+	gen l`v' = log(`v')
+}
 foreach v of loc to_lag {
 	gen `v'l1 = l.`v'
 }
@@ -123,5 +127,23 @@ keep if _merge == 3
 drop _merge
 
 **Note: Left merge on Sufi's data took care of sample selection. Moving on.
+
+**Generate variables that require Sufi's data
+foreach v in line lineun linetot {
+	gen ra_`v' = `v' / at
+	if ("`v'" != "line") {
+	    gen liq_`v' = `v' / (`v' + che)
+	}
+}
+
+**Generate year dummies
+levelsof yeara, local(years)
+foreach y of local years {
+  gen yd`y' = (yeara == `y')
+}
+
+**Make sic code just one digit
+replace sic = substr(sic, 1, 1)
+destring sic, replace
 
 save "../out/out.dta", replace
