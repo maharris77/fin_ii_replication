@@ -6,7 +6,7 @@ set more off
 
 
 *TABLE 1: SUMMARY STATISTICS;
-tabstat
+estpost tabstat
 lineofcredit
 bd
 cflcl1
@@ -22,8 +22,9 @@ spind
 exch
 firmage
 , s(mean p50 sd n) col(stat) f(%7.3f) ;
+eststo s1;
 
-tabstat
+estpost tabstat
 lineofcredit_rs
 ra_linetot
 ra_lineun
@@ -45,7 +46,9 @@ spind
 exch
 firmage
 if randomsample==1, s(mean p50 sd n) col(stat) f(%7.3f) ;
+eststo s2;
 
+esttab using ../tmp/table_1.tex, replace;
 
 *TABLE 3;
 eststo: xi: dprobit lineofcredit  yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1
