@@ -47,15 +47,15 @@ spind
 exch
 firmage
 if randomsample==1, s(mean med sd n) col(stat);
-pause on;
-ret li;
+*pause on;
 eststo s2;
 eststo dir;
-ret li;
-pause just did eststo `r(e)';
+estimates replay;
+estimates replay s1;
+estimates replay s2;
 
 esttab s1 s2 using ../tmp/table_1.tex, replace
-  cells((Mean median sd))
+  cells((mean med sd))
   title("Summary statistics.");
 
 *TABLE 3;
