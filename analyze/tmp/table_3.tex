@@ -1,49 +1,49 @@
 \begin{table}[htbp]\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \caption{Bank lines of credit and firm characteristics\label{tab3}}
-\begin{tabular}{l*{6}{c}}
+\begin{tabular}{l*{8}{c}}
 \toprule
-                    &\multicolumn{2}{c}{\shortstack{Firm has line of credit\{0,1\}\\Probit (marginal effects)}}&\multicolumn{2}{c}{\shortstack{Total line/(total\\line + cash) OLS}}&\multicolumn{2}{c}{\shortstack{Unused line/(unused\\line + cash) OLS}}\\
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
-                    &\multicolumn{1}{c}{Full}&\multicolumn{1}{c}{Random}&\multicolumn{1}{c}{Random}&\multicolumn{1}{c}{\shortstack{With line\\of credit}}&\multicolumn{1}{c}{Random}&\multicolumn{1}{c}{\shortstack{With line\\of credit}}\\
+                    &\multicolumn{2}{c}{\shortstack{Firm has line of credit\{0,1\}\\Probit (marginal effects)}}&\multicolumn{2}{c}{\shortstack{Total line/(total\\line + cash) OLS}}&\multicolumn{2}{c}{\shortstack{Unused line/(unused\\line + cash) OLS}}                 \\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
+                    &\multicolumn{1}{c}{Full}&\multicolumn{1}{c}{Random}&\multicolumn{1}{c}{Random}&\multicolumn{1}{c}{\shortstack{With line\\of credit}}&\multicolumn{1}{c}{Random}&\multicolumn{1}{c}{\shortstack{With line\\of credit}}&\multicolumn{1}{c}{est7}&\multicolumn{1}{c}{est8}\\
 \midrule
-cflcl1              &       0.343\sym{***}&       0.216         &      0.0219         &      0.0234         &      0.0226         &      0.0884         \\
-                    &      (8.85)         &      (1.10)         &      (0.62)         &      (0.41)         &      (0.69)         &      (1.57)         \\
+cflcl1              &                     &                     &       0.343\sym{***}&       0.216         &      0.0219         &      0.0234         &      0.0226         &      0.0884         \\
+                    &                     &                     &      (8.85)         &      (1.10)         &      (0.62)         &      (0.41)         &      (0.69)         &      (1.57)         \\
 \addlinespace
-tanglcl1            &       0.101         &       0.360         &      0.0329         &     -0.0191         &      0.0239         &     -0.0298         \\
-                    &      (1.21)         &      (1.12)         &      (0.45)         &     (-0.30)         &      (0.35)         &     (-0.44)         \\
+tanglcl1            &                     &                     &       0.101         &       0.360         &      0.0329         &     -0.0191         &      0.0239         &     -0.0298         \\
+                    &                     &                     &      (1.21)         &      (1.12)         &      (0.45)         &     (-0.30)         &      (0.35)         &     (-0.44)         \\
 \addlinespace
-lasslcl1            &       0.194\sym{***}&       0.191\sym{***}&      0.0580\sym{***}&      0.0352\sym{***}&      0.0567\sym{***}&      0.0434\sym{***}\\
-                    &     (14.28)         &      (3.33)         &      (5.27)         &      (3.91)         &      (5.50)         &      (4.75)         \\
+lasslcl1            &                     &                     &       0.194\sym{***}&       0.191\sym{***}&      0.0580\sym{***}&      0.0352\sym{***}&      0.0567\sym{***}&      0.0434\sym{***}\\
+                    &                     &                     &     (14.28)         &      (3.33)         &      (5.27)         &      (3.91)         &      (5.50)         &      (4.75)         \\
 \addlinespace
-nwlcl1              &      -0.288\sym{***}&     -0.0799         &     -0.0807         &      -0.131\sym{*}  &     -0.0429         &     -0.0475         \\
-                    &     (-5.21)         &     (-0.34)         &     (-1.68)         &     (-2.42)         &     (-1.00)         &     (-0.91)         \\
+nwlcl1              &                     &                     &      -0.288\sym{***}&     -0.0799         &     -0.0807         &      -0.131\sym{*}  &     -0.0429         &     -0.0475         \\
+                    &                     &                     &     (-5.21)         &     (-0.34)         &     (-1.68)         &     (-2.42)         &     (-1.00)         &     (-0.91)         \\
 \addlinespace
-mblcl1              &     -0.0515\sym{***}&     -0.0738\sym{***}&     -0.0268\sym{***}&     -0.0328\sym{***}&     -0.0226\sym{***}&     -0.0286\sym{***}\\
-                    &    (-12.05)         &     (-4.03)         &     (-7.23)         &     (-6.21)         &     (-6.46)         &     (-5.24)         \\
+mblcl1              &                     &                     &     -0.0515\sym{***}&     -0.0738\sym{***}&     -0.0268\sym{***}&     -0.0328\sym{***}&     -0.0226\sym{***}&     -0.0286\sym{***}\\
+                    &                     &                     &    (-12.05)         &     (-4.03)         &     (-7.23)         &     (-6.21)         &     (-6.46)         &     (-5.24)         \\
 \addlinespace
-q\_salesvar          &       3.555\sym{***}&       11.79\sym{***}&       1.078\sym{*}  &       0.110         &       1.223\sym{*}  &       0.395         \\
-                    &      (3.61)         &      (3.72)         &      (2.22)         &      (0.27)         &      (2.50)         &      (0.87)         \\
+q\_salesvar          &                     &                     &       3.555\sym{***}&       11.79\sym{***}&       1.078\sym{*}  &       0.110         &       1.223\sym{*}  &       0.395         \\
+                    &                     &                     &      (3.61)         &      (3.72)         &      (2.22)         &      (0.27)         &      (2.50)         &      (0.87)         \\
 \addlinespace
-cfvar               &     -0.0328         &      -0.460         &      -0.127\sym{***}&      -0.212         &     -0.0795\sym{*}  &     -0.0878         \\
-                    &     (-1.06)         &     (-1.84)         &     (-3.44)         &     (-1.78)         &     (-2.31)         &     (-0.78)         \\
+cfvar               &                     &                     &     -0.0328         &      -0.460         &      -0.127\sym{***}&      -0.212         &     -0.0795\sym{*}  &     -0.0878         \\
+                    &                     &                     &     (-1.06)         &     (-1.84)         &     (-3.44)         &     (-1.78)         &     (-2.31)         &     (-0.78)         \\
 \addlinespace
-spind               &      -0.174\sym{**} &     -0.0876         &     -0.0790         &     -0.0768\sym{*}  &     -0.0434         &     -0.0473         \\
-                    &     (-3.24)         &     (-0.41)         &     (-1.77)         &     (-1.98)         &     (-0.99)         &     (-1.21)         \\
+spind               &                     &                     &      -0.174\sym{**} &     -0.0876         &     -0.0790         &     -0.0768\sym{*}  &     -0.0434         &     -0.0473         \\
+                    &                     &                     &     (-3.24)         &     (-0.41)         &     (-1.77)         &     (-1.98)         &     (-0.99)         &     (-1.21)         \\
 \addlinespace
-exch                &     -0.0307         &      -0.136         &     0.00943         &      0.0225         &     -0.0300         &     -0.0365         \\
-                    &     (-0.67)         &     (-0.80)         &      (0.24)         &      (0.63)         &     (-0.82)         &     (-0.98)         \\
+exch                &                     &                     &     -0.0307         &      -0.136         &     0.00943         &      0.0225         &     -0.0300         &     -0.0365         \\
+                    &                     &                     &     (-0.67)         &     (-0.80)         &      (0.24)         &      (0.63)         &     (-0.82)         &     (-0.98)         \\
 \addlinespace
-lfirmage            &      0.0104         &     -0.0264         &     -0.0135         &     -0.0235         &    -0.00270         &     -0.0113         \\
-                    &      (0.49)         &     (-0.33)         &     (-0.77)         &     (-1.44)         &     (-0.16)         &     (-0.67)         \\
+lfirmage            &                     &                     &      0.0104         &     -0.0264         &     -0.0135         &     -0.0235         &    -0.00270         &     -0.0113         \\
+                    &                     &                     &      (0.49)         &     (-0.33)         &     (-0.77)         &     (-1.44)         &     (-0.16)         &     (-0.67)         \\
 \addlinespace
-Constant            &      -0.324         &       5.024\sym{***}&       0.603\sym{***}&       0.850\sym{***}&       0.406\sym{***}&       0.525\sym{***}\\
-                    &     (-0.96)         &     (17.30)         &      (6.36)         &      (9.91)         &      (3.37)         &      (4.47)         \\
+Constant            &                     &                     &      -0.324         &       5.024\sym{***}&       0.603\sym{***}&       0.850\sym{***}&       0.406\sym{***}&       0.525\sym{***}\\
+                    &                     &                     &     (-0.96)         &     (17.30)         &      (6.36)         &      (9.91)         &      (3.37)         &      (4.47)         \\
 \midrule
-Observations        &       27523         &        1840         &        1840         &        1380         &        1838         &        1378         \\
-\(R^{2}\)           &                     &                     &       0.385         &       0.298         &       0.355         &       0.238         \\
+Observations        &       28447         &        1908         &       27523         &        1840         &        1840         &        1380         &        1838         &        1378         \\
+\(R^{2}\)           &                     &                     &                     &                     &       0.385         &       0.298         &       0.355         &       0.238         \\
 \bottomrule
-\multicolumn{7}{l}{\footnotesize \textit{t} statistics in parentheses}\\
-\multicolumn{7}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\multicolumn{9}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{9}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
 \end{tabular}
 \end{table}

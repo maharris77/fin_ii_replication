@@ -21,7 +21,7 @@ cfvar
 spind
 exch
 firmage
-, s(mean p50 sd n) col(stat) f(%7.3f) ;
+, s(mean p50 sd n) col(stat);
 eststo s1;
 
 estpost tabstat
@@ -45,7 +45,7 @@ cfvar
 spind
 exch
 firmage
-if randomsample==1, s(mean p50 sd n) col(stat) f(%7.3f) ;
+if randomsample==1, s(mean p50 sd n) col(stat);
 eststo s2;
 
 esttab using ../tmp/table_1.tex, replace;
