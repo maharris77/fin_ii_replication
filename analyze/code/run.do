@@ -68,8 +68,10 @@ eststo: xi: regress liq_lineun    yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblc
 q_salesvar cfvar spind exch lfirmage if randomsample==1 & lineofcredit_rs==1,
 cluster(gvkey) robust;
 
-esttab using ../tmp/table_3.tex, replace label booktabs drop(_Isic_* yd*)
-  title(Bank lines of credit and firm characteristics\label{tab3});
+esttab using ../tmp/table_3.tex, replace r2 label booktabs drop(_Isic_* yd*)
+  title(Bank lines of credit and firm characteristics\label{tab3})
+  mtitles(Full Random Random "With line of credit" Random "With line of credit")
+  ;
 
 
 *FIGURE 1;
