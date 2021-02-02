@@ -6,6 +6,7 @@ set more off
 
 
 *TABLE 1: SUMMARY STATISTICS;
+eststo clear;
 estpost tabstat
 lineofcredit
 bd
@@ -46,11 +47,20 @@ spind
 exch
 firmage
 if randomsample==1, s(mean p50 sd n) col(stat);
+pause on;
+ret li;
 eststo s2;
+eststo dir;
+ret li;
+pause just did eststo `r(e)';
 
-esttab s1 s2 using ../tmp/table_1.tex, replace title("Summary statistics.");
+esttab s1 s2 using ../tmp/table_1.tex, replace
+  cell((Mean Median "St. Dev."))
+  title("Summary statistics.");
 
 *TABLE 3;
+eststo clear;
+
 eststo: xi: dprobit lineofcredit  yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1
 q_salesvar cfvar spind exch lfirmage, cluster(gvkey);
 
