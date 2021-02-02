@@ -71,7 +71,7 @@ cluster(gvkey) robust;
 
 esttab using ../tmp/table_3.tex, replace r2 label booktabs drop(_Isic_* yd*)
   title(Bank lines of credit and firm characteristics\label{tab3})
-  mtitles(Full Random Random "With line of credit" Random "With line of credit")
+  mtitles(Full Random Random "\shortstack{With line\\of credit}" Random "\shortstack{With line\\of credit}")
   mgroups("LoC indicator, Probit" "Total line, OLS" "Unused line OLS", pattern(1 0 1 0 1 0));
 
 
