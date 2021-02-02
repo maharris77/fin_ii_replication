@@ -81,6 +81,7 @@ twoway scatter cash cfcat, connect(1) msymbol(X) yaxis(1)
   scatter lineofcredit cfcat, connect(1) msymbol(d) yaxis(2)
   ytitle("Fraction with line of credit", axis(2))
   legend(order(1 "Average cash/assets (left axis)" 2 "Fraction with line of credit (right axis)"));
+* NOTE: Graph export will not work in batch mode; if on *nix system, run xstata.
 graph export ../out/figure_2.png, replace;
 window manage close graph;
 restore;
