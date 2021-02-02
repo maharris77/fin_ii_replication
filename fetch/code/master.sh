@@ -20,4 +20,4 @@ rsync $WRDS:~/compustat_data/\{compq,compa,names\}.dta ${next}/in/
 url="https://www.dropbox.com/s/ksrfg4i6shj6g61/SPMIM_data.dta?dl=1"
 wget -nc -O ${next}/in/SPMIM_data.dta $url
 
-say "done"
+say "done" &

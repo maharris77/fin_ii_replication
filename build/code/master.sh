@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh 
+#!/usr/bin/env zsh
 pwd
 step="build"
 next="analyze"
@@ -36,4 +36,4 @@ wait
 # Sync to next in dir (Would make symlink, but data access problems on Windows)
 rsync -a $step/out/* $next/in/
 
-say "done"
+say "done" &

@@ -31,4 +31,4 @@ fi
 rsync -a "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
 wait
 
-say "done"
+say "done" &
