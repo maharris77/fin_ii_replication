@@ -22,7 +22,7 @@ cfvar
 spind
 exch
 firmage
-, s(mean p50 sd n) col(stat);
+, s(mean med sd n) col(stat);
 eststo s1;
 
 estpost tabstat
@@ -46,7 +46,7 @@ cfvar
 spind
 exch
 firmage
-if randomsample==1, s(mean p50 sd n) col(stat);
+if randomsample==1, s(mean med sd n) col(stat);
 pause on;
 ret li;
 eststo s2;
