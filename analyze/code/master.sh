@@ -19,16 +19,16 @@ wait
 # Only run remote commands to produce output if some input has changed
 if fgrep "${indic}" /tmp/rsync.log.${step}.* > /dev/null; then
     echo "rsync did something! Running commands..."
-    ssh -t $REMOTE << SCRIPT
+    ssh -t -Y $REMOTE << SCRIPT
       cd $remote_dir$code_dir
-      stata run.do
+      xstata do run.do
 SCRIPT
 else
   echo "rsync: All files were current. Skipping commands..."
 fi
 
-# Sync outputs back to local machine
-rsync -a "$REMOTE:${remote_dir}${out_dir}*.dta" $step/out/ &
+# Sync all outputs back to local machine
+rsync -a "$REMOTE:${remote_dir}${out_dir}*" $step/out/ &
 wait
 
 say "done" &
