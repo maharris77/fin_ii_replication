@@ -48,7 +48,7 @@ firmage
 if randomsample==1, s(mean p50 sd n) col(stat);
 eststo s2;
 
-esttab using ../tmp/table_1.tex, replace;
+esttab s1 s2 using ../tmp/table_1.tex, replace title("Summary statistics.");
 
 *TABLE 3;
 eststo: xi: dprobit lineofcredit  yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblcl1
