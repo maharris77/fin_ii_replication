@@ -75,7 +75,7 @@ esttab using ../tmp/table_3.tex, replace r2 label booktabs drop(_Isic_* yd*)
   mgroups("\shortstack{Firm has line of credit\{0,1\}\\Probit (marginal effects)}"
           "\shortstack{Total line/(total\\line + cash) OLS}"
           "\shortstack{Unused line/(unused\\line + cash) OLS}"
-          , pattern(1 0 1 0 1 0));
+          , pattern(1 0 1 0 1 0) span);
 
 
 *FIGURE 1;
