@@ -55,7 +55,7 @@ ret li;
 pause just did eststo `r(e)';
 
 esttab s1 s2 using ../tmp/table_1.tex, replace
-  
+  cells((mean median sd))
   title("Summary statistics.");
 
 *TABLE 3;

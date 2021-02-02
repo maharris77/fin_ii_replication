@@ -1,15 +1,33 @@
 \begin{table}[htbp]\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \caption{Summary statistics.}
-\begin{tabular}{l*{2}{c}}
+\begin{tabular}{l*{2}{ccc}}
 \hline\hline
-            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
-            &\multicolumn{1}{c}{} &\multicolumn{1}{c}{} \\
+            &\multicolumn{3}{c}{(1)}               &\multicolumn{3}{c}{(2)}               \\
+            &\multicolumn{3}{c}{}                  &\multicolumn{3}{c}{}                  \\
+            &        mean&      median&          sd&        mean&      median&          sd\\
 \hline
+lineofcredit&    .8169227&            &    .3867367&            &            &            \\
+bd          &    .2036165&            &    .1903205&    .2047467&            &    .1958783\\
+cflcl1      &   -.0071065&            &    .4718547&    .0009422&            &    .4674657\\
+tanglcl1    &    .3403608&            &    .2444293&    .3310083&            &    .2297036\\
+nwlcl1      &    .4212587&            &    .3058165&     .440528&            &    .2864157\\
+asslcl1     &    1608.557&            &    10672.17&    1441.409&            &    7682.261\\
+mblcl1      &    3.117259&            &    4.014041&    2.944776&            &    3.829263\\
+q\_salesvar  &    .0430922&            &    .1479279&    .0447061&            &    .0332487\\
+cfvar       &    .1933904&            &    .7791756&    .1710891&            &    .3410881\\
+spind       &    .3796534&            &    .4853092&    .3993711&            &    .4898975\\
+exch        &    .2302528&            &     .421002&    .2400419&            &    .4272206\\
+firmage     &    13.99121&            &    11.43859&    13.71384&            &    11.41379\\
+lineofcredit\_rs&            &            &            &    .7484277&            &    .4340304\\
+ra\_linetot  &            &            &            &    .1589078&            &     .168808\\
+ra\_lineun   &            &            &            &    .1020528&            &    .1246345\\
+ra\_line     &            &            &            &     .056855&            &    .0973093\\
+liq\_linetot &            &            &            &    .5117739&            &    .3875958\\
+liq\_lineun  &            &            &            &    .4497054&            &    .3731998\\
+def         &            &            &            &    .0796646&            &    .2708442\\
 \hline
-\(N\)       &       28447         &        1908         \\
+\(N\)       &       28447&            &            &        1908&            &            \\
 \hline\hline
-\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
-\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
 \end{tabular}
 \end{table}
