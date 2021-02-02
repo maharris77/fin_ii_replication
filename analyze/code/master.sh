@@ -5,6 +5,7 @@ remote_dir="$REMOTE_HOME/workspace/fin_ii_replication/"
 code_dir="$step/code/"
 in_dir="$step/in/"
 out_dir="$step/out/"
+tmp_dir="$step/tmp/"
 
 ##Sync necessary code and inputs to remote machine
 # First, store command: inserts a file-changed indicator into rsync log.
@@ -29,6 +30,7 @@ fi
 
 # Sync all outputs back to local machine
 rsync -a "$REMOTE:${remote_dir}${out_dir}*" $step/out/ &
+rsync -a "$REMOTE:${remote_dir}${tmp_dir}*.{tex,eps}" $step/tmp/ &
 wait
 
 say "done" &

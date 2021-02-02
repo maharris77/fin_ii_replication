@@ -68,7 +68,7 @@ eststo: xi: regress liq_lineun    yd* i.sic cflcl1 tanglcl1 lasslcl1 nwlcl1 mblc
 q_salesvar cfvar spind exch lfirmage if randomsample==1 & lineofcredit_rs==1,
 cluster(gvkey) robust;
 
-esttab using ../out/table_3.tex, replace
+esttab using ../tmp/table_3.tex, replace
   title(Bank lines of credit and firm characteristics\label{tab3});
 
 
@@ -81,8 +81,8 @@ twoway scatter cash cfcat, connect(1) msymbol(X) yaxis(1)
   scatter lineofcredit cfcat, connect(1) msymbol(d) yaxis(2)
   ytitle("Fraction with line of credit", axis(2))
   legend(order(1 "Average cash/assets (left axis)" 2 "Fraction with line of credit (right axis)"));
-* NOTE: Graph export will not work in batch mode; if on *nix system, run xstata.
-graph export ../out/figure_2.png, replace;
+* NOTE: Graph export will not work in batch mode. If on *nix system, run xstata.;
+graph export ../tmp/figure_1.eps, replace;
 window manage close graph;
 restore;
 
