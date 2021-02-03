@@ -18,7 +18,7 @@ data home.compustat;
   /* This is the location of Compustatfundamental annual data */
   /* We also need to apply the same filteringswe did on the query page, see the where condition below*/
   set comp.fundq(where = ((CONSOL='C' and INDFMT='INDL' and DATAFMT='STD' and POPSRC='D') and (fyearq>=1994 & fyearq<=2007)));
-  keep gvkey fyearq fqtr atq prccq cshoq ltq txditcq dlcq dlttq seqq actq lctq ppentq cheq prstkcy dvcq oibdpq xintq capxy aqcy saleq actq lctq sstky ipq dpq niq prccm;
+  keep gvkey fyearq fqtr atq prccq cshoq ltq txditcq dlcq dlttq seqq actq lctq ppentq cheq prstkcy dvcq oibdpq xintq capxy aqcy saleq actq lctq sstky ibq dpq niq prccm;
 run;
 
 

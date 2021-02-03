@@ -30,7 +30,7 @@ gen EBITDA_ratio = oibdpq / atq
 gen cashflow_ratio = (ibq + dpq) / total_assets_lag
 gen net_income_ratio = niq / total_assets_lag
 gen interest_expense_ratio = xintq / total_assets_lag
-gen market_to_book_ratio = (atq - (atq - ltq + txditcq) + cshoq * prccm) / atq
+gen market_to_book_ratio = (atq - (atq - ltq + txditcq) + cshoq * prccq) / atq
 gen tangible_assets_ratio = ppentq / atq
 gen log_assets = log(atq)
 
