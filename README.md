@@ -8,4 +8,4 @@ Within each stage, there are directories for code, inputs, outputs, and temporar
 
 The shell scripts named "master.sh" are not a necessary part of the project; they were simply helpful in automating certain processes.
 
-A file is provided for installation of community-developed Stata programs (via ssc install) used in the project.
+A file (install_dependencies.do) is also provided for installation of community-developed Stata programs (via ssc install) used in the project.
