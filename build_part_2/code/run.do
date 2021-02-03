@@ -13,76 +13,26 @@ duplicates drop gvkey yq, force
 xtset gvkey yq, q
 
 **Zero-fill selected variables
-replace txditc=0 if mi(txditc)
-replace oibdp=0 if mi(oibdp)
+replace txditcq=0 if mi(txditc)
+replace oibdpq=0 if mi(oibdp)
 
 **Generate derived variables
 gen total_debt = dltcq + dlttq
 gen total_debt_lag = l.total_debt
-gen total_assets_lag = l.at
+gen total_assets_lag = l.atq
 gen net_debt_issuance = (total_debt - total_debt_lag) / total_assets_lag
-*TODO: gen net_equity_issuance = f(statement of cash flows)
-gen leverage_ratio = total_debt / at
-gen net_worth_a = seqq / at
-* Lagged cashless variables
-loc to_log
-loc to_lag
-gen cflc = oibdp / asslc
-gen tanglc = ppent / asslc
-gen nwlc = (asslc - lt) / asslc
-gen mblc = (asslc - (at - lt - pstkl + txditc) + csho * prcc_f) / asslc
-foreach v of loc to_log {
-	gen l`v' = log(`v')
-}
-foreach v of loc to_lag {
-	gen `v'l1 = l.`v'
-}
-* Cash (scaled by assets)
-gen cash = che / at
-
-**Make the sales-based volatility measure from quarterly data
-preserve
-use "../in/compq.dta", clear
-* SIC codes are in a different database table
-merge m:1 gvkey using "../in/names.dta"
-keep if _merge==3
-drop _merge
-* Same key modifications as before
-ren fyearq yeara
-destring gvkey, replace
-* Turn this into a quarterly panel (we need lags of sales)
-gen yq = yq(yeara, fqtr)
-format yq %tq
-drop if mi(gvkey) | mi(yq)
-duplicates drop gvkey yq, force
-xtset gvkey yq, q
-* Start generating volatility info
-gen sale_diff = saleq - l.saleq
-bys gvkey yeara: egen avg_at = mean(atq)
-bys gvkey yeara: egen sd_sale_diff = sd(sale_diff)
-gen volat = sd_sale_diff / avg_at
-* Calculate it by year and 3-digit SIC code
-gen sic3 = substr(sic, 1, 3)
-bys sic3 yeara: egen q_salesvar = median(volat)
-* Collapse to annual
-keep gvkey yeara q_salesvar sic
-bys _all: keep if _n==1
-* Save the result as temp file
-loc tmp1 "../tmp/compustat_q_vars.dta"
-save `tmp1', replace
-* Go back to annual dataset
-restore
-
-**Merge volatility and SIC codes from quarterly data
-merge 1:1 gvkey yeara using `tmp1'
-keep if _merge==3
-drop _merge
-
-**Make the Mackie-Mason CF variance measure
-sort gvkey yeara
-gen oibdp_diff = oibdp - l.oibdp
-rangestat (sd) oibdp_diff (mean) asslc, interval(yeara -4 -1) by(gvkey)
-gen cfvar = oibdp_diff_sd / asslc_mean
+gen net_equity_issuance = (sstky - prstkcy) / total_assets_lag
+gen leverage_ratio = total_debt / atq
+gen net_worth_ratio = seqq / atq
+gen nwc_ratio = (actq - lctq) / atq
+gen cash_ratio = cheq / atq
+gen EBITDA_ratio = oibdpq / atq
+gen cashflow_ratio = (ibq + dpq) / total_assets_lag
+gen net_income_ratio = niq / total_assets_lag
+gen interest_expense_ratio = xintq / total_assets_lag
+gen market_to_book_ratio = (atq - (atq - ltq + txditcq) + cshoq * prccm) / atq
+gen tangible_assets_ratio = ppentq / atq
+gen log_assets = log(atq)
 
 **Winsorize financial variables
 loc fin_vars "bd cflcl1 tanglcl1 nwlcl1 mblcl1"

@@ -13,7 +13,7 @@ done
 SCRIPT
 
 # Get the Stata files from server
-rsync $WRDS:~/compustat_data2/\{compq\}.dta ${next}/in/
+rsync $WRDS:~/compustat_data2/compq.dta ${next}/in/
 
 
 say "done" &
