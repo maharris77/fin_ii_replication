@@ -6,3 +6,6 @@ build/in/names.dta filter=lfs diff=lfs merge=lfs -text
 build/in/SPMIM_data.dta filter=lfs diff=lfs merge=lfs -text
 build/out/out.dta filter=lfs diff=lfs merge=lfs -text
 analyze/in/out.dta filter=lfs diff=lfs merge=lfs -text
+build_part_2/in/compq.dta filter=lfs diff=lfs merge=lfs -text
+build_part_2/in/ninismithsufi_jfe_control_data_20080611.dta filter=lfs diff=lfs merge=lfs -text
+analyze_part_2/in/out.dta filter=lfs diff=lfs merge=lfs -text
