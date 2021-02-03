@@ -15,6 +15,8 @@ leverage_ratio
 net_worth_ratio
 nwc_ratio
 cash_ratio
+EBITDA_ratio
+cashflow_ratio
 net_income_ratio
 interest_expense_ratio
 
