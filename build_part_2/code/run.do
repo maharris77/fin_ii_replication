@@ -46,10 +46,16 @@ loc condition `condition' 1
 di "`condition'"
 keep if `condition'
 
-*TODO: Enforce 4 consecutive quarters
-
 **Time period restriction
 keep if inrange(yeara, 1996, 2005)
+
+**Enforce 4 consecutive quarters for firm at some point
+* First, count obs in a rolling window
+rangestat (count) yq, interval(yq -3 0) by(gvkey)
+* Drop any firm with max count under 4.
+bys gvkey (yq_count): gen to_drop = (yq_count[_N] < 4)
+drop if to_drop
+
 
 *TODO: Winsorize financial variables
 loc fin_vars
