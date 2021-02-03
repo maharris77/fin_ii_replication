@@ -56,7 +56,6 @@ rangestat (count) yq, interval(yq -3 0) by(gvkey)
 bys gvkey (yq_count): gen to_drop = (yq_count[_N] < 4)
 drop if to_drop
 
-
 **Winsorize financial variables
 loc fin_vars net_debt_issuance net_equity_issuance leverage_ratio ///
 						 net_worth_ratio nwc_ratio cash_ratio EBITDA_ratio cashflow_ratio ///

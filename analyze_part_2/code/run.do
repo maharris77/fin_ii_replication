@@ -28,7 +28,7 @@ eststo s1;
 
 esttab s1 using ../tmp/table_2.tex, replace
   cells((mean(fmt(%9.3f)) p50(fmt(%9.3f)) sd(fmt(%9.3f)))) collabels("Mean" "Median" "SD")
-  title("Summary Statistics");
+  title("Summary Statistics") booktabs;
 /*
 *TABLE 3;
 eststo clear;
