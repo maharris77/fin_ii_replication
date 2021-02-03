@@ -5,59 +5,29 @@ set more off
 #delim ;
 
 
-*TABLE 1: SUMMARY STATISTICS;
+*TABLE 2: SUMMARY STATISTICS;
 eststo clear;
 estpost tabstat
-lineofcredit
-bd
-cflcl1
-tanglcl1
-nwlcl1
-asslcl1
-mblcl1
+net_debt_issuance
+net_equity_issuance
+leverage_ratio
 
-q_salesvar
-cfvar
+net_worth_ratio
+nwc_ratio
+cash_ratio
+net_income_ratio
+interest_expense_ratio
 
-spind
-exch
-firmage
+market_to_book_ratio
+tangible_assets_ratio
+log_assets
 , s(mean med sd n) col(stat);
 eststo s1;
 
-estpost tabstat
-lineofcredit_rs
-ra_linetot
-ra_lineun
-ra_line
-liq_linetot
-liq_lineun
-def
-bd
-cflcl1
-tanglcl1
-nwlcl1
-asslcl1
-mblcl1
-
-q_salesvar
-cfvar
-
-spind
-exch
-firmage
-if randomsample==1, s(mean med sd n) col(stat);
-*pause on;
-eststo s2;
-eststo dir;
-estimates replay;
-estimates replay s1;
-estimates replay s2;
-
-esttab s1 s2 using ../tmp/table_1.tex, replace
-  cells((mean(fmt(%9.3f)) p50(fmt(%9.3f)) sd(fmt(%9.3f)))) collabels("Mean" "Median" "St. Dev.")
-  title("Summary statistics.");
-
+esttab s1 using ../tmp/table_2.tex, replace
+  cells((mean(fmt(%9.3f)) p50(fmt(%9.3f)) sd(fmt(%9.3f)))) collabels("Mean" "Median" "SD")
+  title("Summary Statistics");
+/*
 *TABLE 3;
 eststo clear;
 
@@ -89,20 +59,6 @@ esttab using ../tmp/table_3.tex, replace r2 label booktabs drop(_Isic_* yd*)
           "\shortstack{Total line/(total\\line + cash) OLS}"
           "\shortstack{Unused line/(unused\\line + cash) OLS}"
           , pattern(1 0 1 0 1 0) span prefix(\multicolumn{2}{c}{) suffix(}));
-
-
-*FIGURE 1;
-table cfcat, c(mean lineofcredit mean cash);
-preserve;
-collapse lineofcredit cash, by(cfcat);
-twoway scatter cash cfcat, connect(1) msymbol(X) yaxis(1)
-  ytitle("Cash/assets") xtitle("Deciles of EBITDA/(assets-cash)") ||
-  scatter lineofcredit cfcat, connect(1) msymbol(d) yaxis(2)
-  ytitle("Fraction with line of credit", axis(2))
-  legend(order(1 "Average cash/assets (left axis)" 2 "Fraction with line of credit (right axis)"));
-* NOTE: Graph export will not work in batch mode. If on *nix system, run xstata.;
-graph export ../tmp/figure_1.eps, replace;
-window manage close graph;
-restore;
+*/
 
 exit, STATA clear;
