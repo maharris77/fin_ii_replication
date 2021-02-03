@@ -56,7 +56,7 @@ estimates replay s2;
 
 esttab s1 s2 using ../tmp/table_1.tex, replace
   cells((mean(fmt(%9.3f)) p50(fmt(%9.3f)) sd(fmt(%9.3f)))) collabels("Mean" "Median" "St. Dev.")
-  title("Summary statistics.") booktabs;
+  title("Summary statistics.") booktabs nonumbers mlabels("Full sample" "Random sample");
 
 *TABLE 3;
 eststo clear;
