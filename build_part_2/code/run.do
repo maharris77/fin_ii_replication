@@ -34,69 +34,25 @@ gen market_to_book_ratio = (atq - (atq - ltq + txditcq) + cshoq * prccq) / atq
 gen tangible_assets_ratio = ppentq / atq
 gen log_assets = log(atq)
 
-**Winsorize financial variables
-loc fin_vars "bd cflcl1 tanglcl1 nwlcl1 mblcl1"
-****** NOTE: HE SEEMS TO HAVE NOT WINSORIZED asslcl1 !
-winsor2 `fin_vars', cuts(5 95) replace
 
-**Make the "In an S&P index" variable
-preserve
-use "../in/SPMIM_data.dta", clear
-drop if mi(spmim)
-* All obs left are S&P index obs. Collapse data and add indicator.
-keep gvkey //year
-bys _all: keep if _n==1
-gen spind = 1
-* Prepare for merge
-//ren year yeara
-* Save the result as temp file
-loc tmp2 "../tmp/spind.dta"
-save `tmp2', replace
-* Go back to main compustat dataset
-restore
-
-**Merge the "In an S&P index" variable
-//merge 1:1 gvkey yeara using `tmp2'
-merge m:1 gvkey using `tmp2'
-drop if _merge == 2
-drop _merge
-* NOTE: NO COVERAGE AFTER 2004; but Sufi stops in 2003.
-replace spind = 0 if mi(spind)
-
-**Create the "Traded OTC" variable
-gen exch = inlist(exchg, 13, 19)
-
-* Save the result as temp file
-loc tmp3 "../tmp/compustat_built.dta"
-save `tmp3', replace
-
-**Build the merged panel dataset
-use "../in/sufi_rfs_linesofcredit20070221data.dta", clear
-merge 1:1 gvkey yeara using `tmp3'
-keep if _merge == 3
-drop _merge
-
-**Note: Left merge on Sufi's data took care of sample selection. Moving on.
-
-**Generate variables that require Sufi's data
-foreach v in line lineun linetot {
-	gen ra_`v' = `v' / at
-	if ("`v'" != "line") {
-	    gen liq_`v' = `v' / (`v' + che)
-	}
+**Enforce data requirements
+loc require_vars at saleq ppentq total_debt seqq cheq actq lctq oibdpq ibq ///
+								 dpq niq xintq market_to_book_ratio
+loc condition
+foreach v of loc require_vars {
+	loc condition `condition' !mi(`v') & !mi(l.`v') &
 }
+loc condition `condition' 1
+di "`condition'"
+keep if `condition'
 
-**Generate year dummies
-levelsof yeara, local(years)
-foreach y of local years {
-  gen yd`y' = (yeara == `y')
-}
+*TODO: Enforce 4 consecutive quarters
 
-**Make sic code just one digit
-replace sic = substr(sic, 1, 1)
-destring sic, replace
+**Time period restriction
+keep if inrange(yeara, 1996, 2005)
 
-**Generate cash flow deciles
-xtile cfcat = cflc, nq(10)
+*TODO: Winsorize financial variables
+loc fin_vars
+//winsor2 `fin_vars', cuts(5 95) replace
 
 save "../out/out.dta", replace
