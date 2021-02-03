@@ -57,8 +57,11 @@ bys gvkey (yq_count): gen to_drop = (yq_count[_N] < 4)
 drop if to_drop
 
 
-*TODO: Winsorize financial variables
-loc fin_vars
-//winsor2 `fin_vars', cuts(5 95) replace
+**Winsorize financial variables
+loc fin_vars net_debt_issuance net_equity_issuance leverage_ratio ///
+						 net_worth_ratio nwc_ratio cash_ratio EBITDA_ratio cashflow_ratio ///
+						 net_income_ratio interest_expense_ratio market_to_book_ratio ///
+						 tangible_assets_ratio log_assets
+winsor2 `fin_vars', cuts(5 95) replace
 
 save "../out/out.dta", replace
