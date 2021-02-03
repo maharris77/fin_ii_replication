@@ -17,7 +17,7 @@ replace txditcq=0 if mi(txditc)
 replace oibdpq=0 if mi(oibdp)
 
 **Generate derived variables
-gen total_debt = dltcq + dlttq
+gen total_debt = dlcq + dlttq
 gen total_debt_lag = l.total_debt
 gen total_assets_lag = l.atq
 gen net_debt_issuance = (total_debt - total_debt_lag) / total_assets_lag
