@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-pwd
 step="build"
 next="analyze"
 

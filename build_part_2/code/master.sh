@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-pwd
 step="build_part_2"
 next="analyze_part_2"
 
